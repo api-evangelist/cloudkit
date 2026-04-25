@@ -1,0 +1,185 @@
+# Naftiko capabilities profile for Apple CloudKit Web Services.
+# Maps verbs against the CloudKit Web Services REST surface for
+# records, zones, subscriptions, assets, and users.
+provider: cloudkit
+name: Apple CloudKit Web Services
+description: >-
+  Capabilities cover record lookup/query/modify/delete in public, private,
+  and shared databases, zone management, subscription management, asset
+  upload, user info, and database change tracking. Authentication is via
+  API token (with optional ckWebAuthToken for user-authenticated access)
+  or server-to-server ECDSA key.
+capabilities:
+  - id: cloudkit.records.lookup
+    name: Lookup records
+    description: Fetch one or more records by record name from a database.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - database
+      - record_names
+    outputs:
+      - records
+
+  - id: cloudkit.records.query
+    name: Query records
+    description: Run a typed query (recordType, filterBy, sortBy) against a database.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - database
+      - zone_id
+      - record_type
+      - filter_by
+      - sort_by
+      - limit
+    outputs:
+      - records
+      - continuation_marker
+
+  - id: cloudkit.records.modify
+    name: Modify records
+    description: Create, update, or replace records in a database.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - database
+      - operations
+    outputs:
+      - records
+      - errors
+
+  - id: cloudkit.records.delete
+    name: Delete records
+    description: Delete one or more records by record name.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - database
+      - record_names
+    outputs:
+      - records
+
+  - id: cloudkit.zones.list
+    name: List zones
+    description: Return all zones for a database.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - database
+    outputs:
+      - zones
+
+  - id: cloudkit.zones.create
+    name: Create zone
+    description: Create a custom zone in the private database.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - zone_name
+    outputs:
+      - zone
+
+  - id: cloudkit.zones.delete
+    name: Delete zone
+    description: Delete a custom zone.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - zone_name
+    outputs:
+      - zone
+
+  - id: cloudkit.subscriptions.list
+    name: List subscriptions
+    description: Return subscriptions for the current user in a database.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - database
+    outputs:
+      - subscriptions
+
+  - id: cloudkit.subscriptions.create
+    name: Create subscription
+    description: Create a query, zone, or database subscription.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - database
+      - subscription_id
+      - subscription_type
+      - filter_by
+    outputs:
+      - subscription
+
+  - id: cloudkit.subscriptions.delete
+    name: Delete subscription
+    description: Delete a subscription by id.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - database
+      - subscription_id
+    outputs:
+      - subscription
+
+  - id: cloudkit.assets.upload
+    name: Upload asset
+    description: Upload binary asset content for a record field.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - database
+      - record_type
+      - field_name
+      - file
+    outputs:
+      - asset
+
+  - id: cloudkit.users.current
+    name: Get current user
+    description: Return the user record name and identity for the calling token.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+    outputs:
+      - user
+
+  - id: cloudkit.users.lookup
+    name: Lookup users
+    description: Look up user records by user record name, email, or phone.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - users
+    outputs:
+      - users
+
+  - id: cloudkit.changes.zone
+    name: Fetch zone changes
+    description: Pull incremental changes to records within a zone since a sync token.
+    api: cloudkit:web-services
+    inputs:
+      - container
+      - environment
+      - database
+      - zone_id
+      - sync_token
+    outputs:
+      - records
+      - sync_token
+      - more_coming

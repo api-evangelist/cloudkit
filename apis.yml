@@ -1,0 +1,105 @@
+aid: cloudkit
+name: Apple CloudKit
+description: >-
+  Apple CloudKit is the cloud backend for iOS, iPadOS, macOS, tvOS,
+  watchOS, visionOS, and the web. CloudKit Web Services is the public REST
+  surface that lets non-Apple-platform clients (web apps, servers) read
+  and write data into a CloudKit container's public, private, or shared
+  database. The web service is hosted at api.apple-cloudkit.com and accepts
+  either an API token (for end-user-authenticated access) or a server-to-
+  server ECDSA key for backend access. Operations cover records,
+  zones, subscriptions, assets, users, and database changes.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/cloudkit/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-04-25'
+specificationVersion: '0.19'
+x-type: company
+tags:
+  - Apple
+  - Cloud Storage
+  - CloudKit
+  - Database
+  - iCloud
+  - Mobile
+  - Sync
+  - Web Services
+apis:
+  - aid: cloudkit:web-services
+    name: CloudKit Web Services
+    tags:
+      - REST
+      - Records
+      - Zones
+      - Subscriptions
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://api.apple-cloudkit.com/database/1
+    humanURL: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+    properties:
+      - url: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+        type: Documentation
+      - url: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html
+        type: Setup
+      - url: https://developer.apple.com/documentation/cloudkit/obtaining-an-api-token-for-an-icloud-container
+        type: API Tokens
+    description: >-
+      The CloudKit Web Services REST API is structured as
+      /database/1/{container}/{environment}/{database}/{operation}, where
+      database is one of public, private, or shared and environment is
+      development or production. Operations include records lookup, query,
+      modify, delete, zone create/list/delete, subscription
+      create/list/delete, asset upload, user info and changes. Calls are
+      authenticated using an API token for user-authenticated access (with
+      ckWebAuthToken) or a server-to-server ECDSA key for backend access.
+  - aid: cloudkit:js
+    name: CloudKit JS
+    tags:
+      - JavaScript
+      - SDK
+      - Web
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.apple.com/documentation/cloudkitjs
+    properties:
+      - url: https://developer.apple.com/documentation/cloudkitjs
+        type: Documentation
+    description: >-
+      CloudKit JS is Apple's JavaScript SDK that wraps the CloudKit Web
+      Services REST API for browser apps. It provides Sign in with Apple
+      authentication, container/database/zone access, queries, record
+      operations, subscriptions, and asset management.
+  - aid: cloudkit:framework
+    name: CloudKit Framework
+    tags:
+      - SDK
+      - Apple Platforms
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.apple.com/documentation/cloudkit
+    properties:
+      - url: https://developer.apple.com/documentation/cloudkit
+        type: Documentation
+    description: >-
+      The native CloudKit framework for iOS, iPadOS, macOS, tvOS, watchOS,
+      and visionOS. Provides programmatic access to CloudKit containers,
+      records, zones, subscriptions, and sharing. Out of band of the web
+      services REST surface but shares the same data model.
+common:
+  - type: Website
+    url: https://www.icloud.com/
+  - type: Developer
+    url: https://developer.apple.com/icloud/cloudkit/
+  - type: Documentation
+    url: https://developer.apple.com/documentation/cloudkit
+  - type: Console
+    url: https://icloud.developer.apple.com/dashboard/
+  - type: Privacy Policy
+    url: https://www.apple.com/legal/privacy/
+  - type: JSON-LD
+    url: json-ld/cloudkit-context.jsonld
+  - type: Spectral
+    url: rules/cloudkit-rules.yml
+  - type: Naftiko Capabilities
+    url: capabilities/cloudkit-records.yaml
+maintainers:
+  - FN: Kin Lane
+    email: kinlane@gmail.com

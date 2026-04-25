@@ -1,0 +1,120 @@
+extends:
+  - spectral:oas
+
+# Spectral linting rules for the Apple CloudKit Web Services API.
+# Validates CloudKit's path shape (/database/1/{container}/{env}/{db})
+# and the auth/query parameter conventions used by the web service.
+rules:
+  cloudkit-info-contact:
+    description: API contact information must be present.
+    severity: error
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  cloudkit-info-license:
+    description: API license must be declared.
+    severity: warn
+    given: "$.info"
+    then:
+      field: license
+      function: truthy
+
+  cloudkit-server-https:
+    description: All server URLs must use HTTPS.
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  cloudkit-server-base:
+    description: CloudKit server URLs must point at api.apple-cloudkit.com.
+    severity: warn
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "api\\.apple-cloudkit\\.com"
+
+  cloudkit-database-versioned:
+    description: CloudKit paths must include /database/{version}.
+    severity: warn
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "/database/\\d+(/|$)"
+
+  cloudkit-environment:
+    description: Paths should specify development or production environment.
+    severity: info
+    given: "$.paths[*]"
+    then:
+      function: pattern
+      functionOptions:
+        match: "(development|production)"
+
+  cloudkit-auth:
+    description: A security scheme must be declared (apiKey or signature-based).
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      function: truthy
+
+  cloudkit-token-param:
+    description: Operations using API token auth should declare ckAPIToken.
+    severity: info
+    given: "$.paths[*][get,post].parameters[?(@.in == 'query')].name"
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - ckAPIToken
+          - ckWebAuthToken
+          - ckSession
+
+  cloudkit-operation-id:
+    description: Every operation must declare a unique operationId.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  cloudkit-operation-summary:
+    description: Every operation must include a short summary.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  cloudkit-operation-tags:
+    description: Every operation must declare at least one tag.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          minItems: 1
+
+  cloudkit-error-responses:
+    description: Mutating operations should declare 4xx error responses.
+    severity: warn
+    given: "$.paths[*][post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: ["400"]
+            - required: ["401"]
+            - required: ["403"]
+            - required: ["404"]

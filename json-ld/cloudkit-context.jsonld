@@ -1,0 +1,93 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "cloudkit": "https://api.apple-cloudkit.com/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Container": {
+      "@id": "cloudkit:Container",
+      "@context": {
+        "containerIdentifier": "cloudkit:container_identifier",
+        "environment": "cloudkit:environment"
+      }
+    },
+
+    "Database": {
+      "@id": "cloudkit:Database",
+      "@context": {
+        "databaseScope": "cloudkit:database_scope"
+      }
+    },
+
+    "Zone": {
+      "@id": "cloudkit:Zone",
+      "@context": {
+        "zoneID": "cloudkit:zone_id",
+        "ownerRecordName": "cloudkit:owner_record_name",
+        "atomic": "cloudkit:atomic",
+        "syncToken": "cloudkit:sync_token"
+      }
+    },
+
+    "Record": {
+      "@id": "cloudkit:Record",
+      "@context": {
+        "recordName": "cloudkit:record_name",
+        "recordType": "schema:additionalType",
+        "recordChangeTag": "cloudkit:record_change_tag",
+        "fields": "cloudkit:fields",
+        "created": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modified": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Asset": {
+      "@id": "cloudkit:Asset",
+      "@context": {
+        "fileChecksum": "cloudkit:file_checksum",
+        "size": "schema:contentSize",
+        "downloadURL": {
+          "@id": "schema:url",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Subscription": {
+      "@id": "cloudkit:Subscription",
+      "@context": {
+        "subscriptionID": "cloudkit:subscription_id",
+        "subscriptionType": "cloudkit:subscription_type",
+        "filterBy": "cloudkit:filter_by",
+        "fireOnce": "cloudkit:fire_once"
+      }
+    },
+
+    "User": {
+      "@id": "cloudkit:User",
+      "@context": {
+        "userRecordName": "cloudkit:user_record_name",
+        "firstName": "schema:givenName",
+        "lastName": "schema:familyName",
+        "emailAddress": "schema:email"
+      }
+    },
+
+    "Query": {
+      "@id": "cloudkit:Query",
+      "@context": {
+        "recordType": "schema:additionalType",
+        "filterBy": "cloudkit:filter_by",
+        "sortBy": "cloudkit:sort_by"
+      }
+    }
+  }
+}
