@@ -1,0 +1,327 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apple CloudKit Web Services",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ckAPIToken",
+      "value": "{{ckAPIToken}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create, update, or delete records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/modify"
+          },
+          "docs": "Create, update, or delete records"
+        },
+        {
+          "info": {
+            "name": "Query records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/query"
+          },
+          "docs": "Query records"
+        },
+        {
+          "info": {
+            "name": "Look up records by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/lookup"
+          },
+          "docs": "Look up records by name"
+        },
+        {
+          "info": {
+            "name": "Fetch record changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/changes"
+          },
+          "docs": "Fetch record changes"
+        },
+        {
+          "info": {
+            "name": "Resolve record information for share URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/resolve"
+          },
+          "docs": "Resolve record information for share URLs"
+        },
+        {
+          "info": {
+            "name": "Accept share records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/accept"
+          },
+          "docs": "Accept share records"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List zones in the database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/zones/list"
+          },
+          "docs": "List zones in the database"
+        },
+        {
+          "info": {
+            "name": "Look up zones by identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/zones/lookup"
+          },
+          "docs": "Look up zones by identifier"
+        },
+        {
+          "info": {
+            "name": "Create or delete zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/zones/modify"
+          },
+          "docs": "Create or delete zones"
+        },
+        {
+          "info": {
+            "name": "Fetch zone changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/zones/changes"
+          },
+          "docs": "Fetch zone changes"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request asset upload URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/assets/upload"
+          },
+          "docs": "Request asset upload URLs"
+        },
+        {
+          "info": {
+            "name": "Re-reference existing assets to new records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/assets/rereference"
+          },
+          "docs": "Re-reference existing assets to new records"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/subscriptions/list"
+          },
+          "docs": "List subscriptions"
+        },
+        {
+          "info": {
+            "name": "Look up subscriptions by identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/subscriptions/lookup"
+          },
+          "docs": "Look up subscriptions by identifier"
+        },
+        {
+          "info": {
+            "name": "Create or delete subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/subscriptions/modify"
+          },
+          "docs": "Create or delete subscriptions"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Changes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch database changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/changes/database"
+          },
+          "docs": "Fetch database changes"
+        },
+        {
+          "info": {
+            "name": "Fetch record zone changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/changes/zone"
+          },
+          "docs": "Fetch record zone changes"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch the caller's user identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/users/caller"
+          },
+          "docs": "Fetch the caller's user identity"
+        },
+        {
+          "info": {
+            "name": "Discover users by email or phone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/users/discover"
+          },
+          "docs": "Discover users by email or phone"
+        },
+        {
+          "info": {
+            "name": "Look up users by email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/users/lookup/email"
+          },
+          "docs": "Look up users by email"
+        },
+        {
+          "info": {
+            "name": "Look up users by record name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/users/lookup/id"
+          },
+          "docs": "Look up users by record name"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an APNs token for subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/tokens/create"
+          },
+          "docs": "Create an APNs token for subscriptions"
+        },
+        {
+          "info": {
+            "name": "Register an APNs token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/tokens/register"
+          },
+          "docs": "Register an APNs token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
