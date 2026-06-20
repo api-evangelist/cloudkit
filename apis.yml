@@ -7,7 +7,7 @@ description: >-
   accepts either an API token (for end-user-authenticated access) or a server-to- server ECDSA key for backend access.
   Operations cover records, zones, subscriptions, assets, users, and database changes.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/cloudkit/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-04-25'
@@ -30,7 +30,7 @@ apis:
       - Records
       - Zones
       - Subscriptions
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.apple-cloudkit.com/database/1
     humanURL: >-
       https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
@@ -55,7 +55,7 @@ apis:
       - JavaScript
       - SDK
       - Web
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.apple.com/documentation/cloudkitjs
     properties:
       - url: https://developer.apple.com/documentation/cloudkitjs
@@ -69,7 +69,7 @@ apis:
     tags:
       - SDK
       - Apple Platforms
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.apple.com/documentation/cloudkit
     properties:
       - url: https://developer.apple.com/documentation/cloudkit
