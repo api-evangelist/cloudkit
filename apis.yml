@@ -79,6 +79,10 @@ apis:
       CloudKit containers, records, zones, subscriptions, and sharing. Out of band of the web services REST surface but
       shares the same data model.
 common:
+  - type: DomainSecurity
+    url: security/cloudkit-domain-security.yml
+  - type: Authentication
+    url: authentication/cloudkit-authentication.yml
   - type: Website
     url: https://www.icloud.com/
   - type: Developer

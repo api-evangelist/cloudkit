@@ -1,0 +1,30 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/cloudkit-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: cloudKitApiToken
+  type: apiKey
+  in: query
+  parameter: ckAPIToken
+  description: |-
+    CloudKit API token issued from the CloudKit dashboard, appended to
+    the request URL as `ckAPIToken`. Required for end-user authenticated
+    access via web auth tokens.
+  sources:
+  - openapi/cloudkit-openapi.yml
+- name: serverToServer
+  type: apiKey
+  in: header
+  parameter: X-Apple-CloudKit-Request-SignatureV1
+  description: |-
+    Server-to-server authentication uses ECDSA-signed requests with
+    `X-Apple-CloudKit-Request-KeyID`, `X-Apple-CloudKit-Request-ISO8601Date`,
+    and `X-Apple-CloudKit-Request-SignatureV1` headers.
+  sources:
+  - openapi/cloudkit-openapi.yml
