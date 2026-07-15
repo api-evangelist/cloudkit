@@ -79,6 +79,8 @@ apis:
       CloudKit containers, records, zones, subscriptions, and sharing. Out of band of the web services REST surface but
       shares the same data model.
 common:
+  - type: AgenticAccess
+    url: agentic-access/cloudkit-agentic-access.yml
   - type: DomainSecurity
     url: security/cloudkit-domain-security.yml
   - type: Authentication
