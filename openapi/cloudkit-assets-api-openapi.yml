@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Apple CloudKit Web Services Assets API
+  description: 'Best-effort OpenAPI 3.1 description of Apple CloudKit Web Services, the
+
+    REST surface that lets non-Apple-platform clients read and write data in
+
+    a CloudKit container''s public, private, or shared database. Operations
+
+    cover records, zones, subscriptions, assets, users, and database/zone
+
+    changes. Authentication uses either a CloudKit API token (for end-user
+
+    authenticated requests; the token is appended as the `ckAPIToken` query
+
+    parameter) or a server-to-server ECDSA signature (X-Apple-CloudKit-Request-*
+
+    headers) for backend access.
+
+    '
+  version: '1.0'
+  contact:
+    name: Apple CloudKit
+    url: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+servers:
+- url: https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}
+  description: CloudKit Web Services database endpoint
+  variables:
+    container:
+      default: iCloud.com.example.myapp
+      description: CloudKit container identifier
+    environment:
+      default: development
+      enum:
+      - development
+      - production
+    database:
+      default: public
+      enum:
+      - public
+      - private
+      - shared
+security:
+- cloudKitApiToken: []
+- serverToServer: []
+tags:
+- name: Assets
+paths:
+  /assets/upload:
+    post:
+      summary: Request asset upload URLs
+      operationId: uploadAssets
+      tags:
+      - Assets
+      responses:
+        '200':
+          description: Upload URLs
+  /assets/rereference:
+    post:
+      summary: Re-reference existing assets to new records
+      operationId: rereferenceAssets
+      tags:
+      - Assets
+      responses:
+        '200':
+          description: Re-referenced
+components:
+  securitySchemes:
+    cloudKitApiToken:
+      type: apiKey
+      in: query
+      name: ckAPIToken
+      description: 'CloudKit API token issued from the CloudKit dashboard, appended to
+
+        the request URL as `ckAPIToken`. Required for end-user authenticated
+
+        access via web auth tokens.
+
+        '
+    serverToServer:
+      type: apiKey
+      in: header
+      name: X-Apple-CloudKit-Request-SignatureV1
+      description: 'Server-to-server authentication uses ECDSA-signed requests with
+
+        `X-Apple-CloudKit-Request-KeyID`, `X-Apple-CloudKit-Request-ISO8601Date`,
+
+        and `X-Apple-CloudKit-Request-SignatureV1` headers.
+
+        '
