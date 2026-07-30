@@ -7,7 +7,19 @@ description: >-
   accepts either an API token (for end-user-authenticated access) or a server-to- server ECDSA key for backend access.
   Operations cover records, zones, subscriptions, assets, users, and database changes.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cloudkit.png
 url: https://raw.githubusercontent.com/api-evangelist/cloudkit/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-04-25'
@@ -23,61 +35,139 @@ tags:
   - Sync
   - Web Services
 apis:
-  - aid: cloudkit:web-services
-    name: CloudKit Web Services
-    tags:
-      - REST
-      - Records
-      - Zones
-      - Subscriptions
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.apple-cloudkit.com/database/1
-    humanURL: >-
+- aid: cloudkit:web-services
+  name: CloudKit Web Services
+  tags:
+  - REST
+  - Records
+  - Zones
+  - Subscriptions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://api.apple-cloudkit.com/database/1
+  humanURL: >-
+    https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+  properties:
+  - url: >-
       https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
-    properties:
-      - url: >-
-          https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
-        type: Documentation
-      - url: >-
-          https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html
-        type: Setup
-      - url: https://developer.apple.com/documentation/cloudkit/obtaining-an-api-token-for-an-icloud-container
-        type: API Tokens
-    description: >-
-      The CloudKit Web Services REST API is structured as /database/1/{container}/{environment}/{database}/{operation},
-      where database is one of public, private, or shared and environment is development or production. Operations
-      include records lookup, query, modify, delete, zone create/list/delete, subscription create/list/delete, asset
-      upload, user info and changes. Calls are authenticated using an API token for user-authenticated access (with
-      ckWebAuthToken) or a server-to-server ECDSA key for backend access.
-  - aid: cloudkit:js
-    name: CloudKit JS
-    tags:
-      - JavaScript
-      - SDK
-      - Web
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.apple.com/documentation/cloudkitjs
-    properties:
-      - url: https://developer.apple.com/documentation/cloudkitjs
-        type: Documentation
-    description: >-
-      CloudKit JS is Apple's JavaScript SDK that wraps the CloudKit Web Services REST API for browser apps. It provides
-      Sign in with Apple authentication, container/database/zone access, queries, record operations, subscriptions, and
-      asset management.
-  - aid: cloudkit:framework
-    name: CloudKit Framework
-    tags:
-      - SDK
-      - Apple Platforms
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.apple.com/documentation/cloudkit
-    properties:
-      - url: https://developer.apple.com/documentation/cloudkit
-        type: Documentation
-    description: >-
-      The native CloudKit framework for iOS, iPadOS, macOS, tvOS, watchOS, and visionOS. Provides programmatic access to
-      CloudKit containers, records, zones, subscriptions, and sharing. Out of band of the web services REST surface but
-      shares the same data model.
+    type: Documentation
+  - url: >-
+      https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html
+    type: Setup
+  - url: >-
+      https://developer.apple.com/documentation/cloudkit/obtaining-an-api-token-for-an-icloud-container
+    type: API Tokens
+  description: >-
+    The CloudKit Web Services REST API is structured as /database/1/{container}/{environment}/{database}/{operation},
+    where database is one of public, private, or shared and environment is development or production.
+    Operations include records lookup, query, modify, delete, zone create/list/delete, subscription create/list/delete,
+    asset upload, user info and changes. Calls are authenticated using an API token for user-authenticated
+    access (with ckWebAuthToken) or a server-to-server ECDSA key for backend access.
+- aid: cloudkit:js
+  name: CloudKit JS
+  tags:
+  - JavaScript
+  - SDK
+  - Web
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.apple.com/documentation/cloudkitjs
+  properties:
+  - url: https://developer.apple.com/documentation/cloudkitjs
+    type: Documentation
+  description: >-
+    CloudKit JS is Apple's JavaScript SDK that wraps the CloudKit Web Services REST API for browser apps.
+    It provides Sign in with Apple authentication, container/database/zone access, queries, record operations,
+    subscriptions, and asset management.
+- aid: cloudkit:framework
+  name: CloudKit Framework
+  tags:
+  - SDK
+  - Apple Platforms
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.apple.com/documentation/cloudkit
+  properties:
+  - url: https://developer.apple.com/documentation/cloudkit
+    type: Documentation
+  description: >-
+    The native CloudKit framework for iOS, iPadOS, macOS, tvOS, watchOS, and visionOS. Provides programmatic
+    access to CloudKit containers, records, zones, subscriptions, and sharing. Out of band of the web
+    services REST surface but shares the same data model.
+- aid: cloudkit:cloudkit-assets-api
+  name: Apple CloudKit Assets API
+  description: The Assets API from Apple CloudKit — 2 operation(s) for assets.
+  humanURL: >-
+    https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+  baseURL: https://api.apple-cloudkit.com/database/1
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudkit-assets-api-openapi.yml
+- aid: cloudkit:cloudkit-changes-api
+  name: Apple CloudKit Changes API
+  description: The Changes API from Apple CloudKit — 2 operation(s) for changes.
+  humanURL: >-
+    https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+  baseURL: https://api.apple-cloudkit.com/database/1
+  tags:
+  - Changes
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudkit-changes-api-openapi.yml
+- aid: cloudkit:cloudkit-records-api
+  name: Apple CloudKit Records API
+  description: The Records API from Apple CloudKit — 6 operation(s) for records.
+  humanURL: >-
+    https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+  baseURL: https://api.apple-cloudkit.com/database/1
+  tags:
+  - Records
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudkit-records-api-openapi.yml
+- aid: cloudkit:cloudkit-subscriptions-api
+  name: Apple CloudKit Subscriptions API
+  description: The Subscriptions API from Apple CloudKit — 3 operation(s) for subscriptions.
+  humanURL: >-
+    https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+  baseURL: https://api.apple-cloudkit.com/database/1
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudkit-subscriptions-api-openapi.yml
+- aid: cloudkit:cloudkit-tokens-api
+  name: Apple CloudKit Tokens API
+  description: The Tokens API from Apple CloudKit — 2 operation(s) for tokens.
+  humanURL: >-
+    https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+  baseURL: https://api.apple-cloudkit.com/database/1
+  tags:
+  - Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudkit-tokens-api-openapi.yml
+- aid: cloudkit:cloudkit-users-api
+  name: Apple CloudKit Users API
+  description: The Users API from Apple CloudKit — 4 operation(s) for users.
+  humanURL: >-
+    https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+  baseURL: https://api.apple-cloudkit.com/database/1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudkit-users-api-openapi.yml
+- aid: cloudkit:cloudkit-zones-api
+  name: Apple CloudKit Zones API
+  description: The Zones API from Apple CloudKit — 4 operation(s) for zones.
+  humanURL: >-
+    https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+  baseURL: https://api.apple-cloudkit.com/database/1
+  tags:
+  - Zones
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudkit-zones-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/cloudkit-agentic-access.yml
