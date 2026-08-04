@@ -1,0 +1,26 @@
+{
+  "provider": "cloudkit",
+  "sources": [
+    "cloudkit-assets-api-openapi.yml",
+    "cloudkit-changes-api-openapi.yml",
+    "cloudkit-records-api-openapi.yml",
+    "cloudkit-subscriptions-api-openapi.yml",
+    "cloudkit-tokens-api-openapi.yml",
+    "cloudkit-users-api-openapi.yml",
+    "cloudkit-zones-api-openapi.yml"
+  ],
+  "outputs": [
+    "cloudkit-assets-api-openapi.yml",
+    "cloudkit-changes-api-openapi.yml",
+    "cloudkit-records-api-openapi.yml",
+    "cloudkit-subscriptions-api-openapi.yml",
+    "cloudkit-tokens-api-openapi.yml",
+    "cloudkit-users-api-openapi.yml",
+    "cloudkit-zones-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

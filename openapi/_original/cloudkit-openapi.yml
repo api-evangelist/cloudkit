@@ -1,0 +1,212 @@
+openapi: 3.1.0
+info:
+  title: Apple CloudKit Web Services
+  description: |
+    Best-effort OpenAPI 3.1 description of Apple CloudKit Web Services, the
+    REST surface that lets non-Apple-platform clients read and write data in
+    a CloudKit container's public, private, or shared database. Operations
+    cover records, zones, subscriptions, assets, users, and database/zone
+    changes. Authentication uses either a CloudKit API token (for end-user
+    authenticated requests; the token is appended as the `ckAPIToken` query
+    parameter) or a server-to-server ECDSA signature (X-Apple-CloudKit-Request-*
+    headers) for backend access.
+  version: '1.0'
+  contact:
+    name: Apple CloudKit
+    url: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+servers:
+  - url: https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}
+    description: CloudKit Web Services database endpoint
+    variables:
+      container:
+        default: iCloud.com.example.myapp
+        description: CloudKit container identifier
+      environment:
+        default: development
+        enum: [development, production]
+      database:
+        default: public
+        enum: [public, private, shared]
+security:
+  - cloudKitApiToken: []
+  - serverToServer: []
+paths:
+  /records/modify:
+    post:
+      summary: Create, update, or delete records
+      operationId: modifyRecords
+      tags: [Records]
+      responses:
+        '200': { description: Modified records }
+  /records/query:
+    post:
+      summary: Query records
+      operationId: queryRecords
+      tags: [Records]
+      responses:
+        '200': { description: Query results }
+  /records/lookup:
+    post:
+      summary: Look up records by name
+      operationId: lookupRecords
+      tags: [Records]
+      responses:
+        '200': { description: Records }
+  /records/changes:
+    post:
+      summary: Fetch record changes
+      operationId: recordChanges
+      tags: [Records]
+      responses:
+        '200': { description: Changes }
+  /records/resolve:
+    post:
+      summary: Resolve record information for share URLs
+      operationId: resolveRecords
+      tags: [Records]
+      responses:
+        '200': { description: Resolved records }
+  /records/accept:
+    post:
+      summary: Accept share records
+      operationId: acceptShare
+      tags: [Records]
+      responses:
+        '200': { description: Share accepted }
+  /zones/list:
+    post:
+      summary: List zones in the database
+      operationId: listZones
+      tags: [Zones]
+      responses:
+        '200': { description: List of zones }
+  /zones/lookup:
+    post:
+      summary: Look up zones by identifier
+      operationId: lookupZones
+      tags: [Zones]
+      responses:
+        '200': { description: Zones }
+  /zones/modify:
+    post:
+      summary: Create or delete zones
+      operationId: modifyZones
+      tags: [Zones]
+      responses:
+        '200': { description: Modified zones }
+  /zones/changes:
+    post:
+      summary: Fetch zone changes
+      operationId: zoneChanges
+      tags: [Zones]
+      responses:
+        '200': { description: Changes }
+  /assets/upload:
+    post:
+      summary: Request asset upload URLs
+      operationId: uploadAssets
+      tags: [Assets]
+      responses:
+        '200': { description: Upload URLs }
+  /assets/rereference:
+    post:
+      summary: Re-reference existing assets to new records
+      operationId: rereferenceAssets
+      tags: [Assets]
+      responses:
+        '200': { description: Re-referenced }
+  /subscriptions/list:
+    post:
+      summary: List subscriptions
+      operationId: listSubscriptions
+      tags: [Subscriptions]
+      responses:
+        '200': { description: List of subscriptions }
+  /subscriptions/lookup:
+    post:
+      summary: Look up subscriptions by identifier
+      operationId: lookupSubscriptions
+      tags: [Subscriptions]
+      responses:
+        '200': { description: Subscriptions }
+  /subscriptions/modify:
+    post:
+      summary: Create or delete subscriptions
+      operationId: modifySubscriptions
+      tags: [Subscriptions]
+      responses:
+        '200': { description: Modified subscriptions }
+  /changes/database:
+    post:
+      summary: Fetch database changes
+      operationId: databaseChanges
+      tags: [Changes]
+      responses:
+        '200': { description: Database changes }
+  /changes/zone:
+    post:
+      summary: Fetch record zone changes
+      operationId: zoneRecordChanges
+      tags: [Changes]
+      responses:
+        '200': { description: Zone changes }
+  /users/caller:
+    post:
+      summary: Fetch the caller's user identity
+      operationId: callerUser
+      tags: [Users]
+      responses:
+        '200': { description: Caller identity }
+  /users/discover:
+    post:
+      summary: Discover users by email or phone
+      operationId: discoverUsers
+      tags: [Users]
+      responses:
+        '200': { description: Users discovered }
+  /users/lookup/email:
+    post:
+      summary: Look up users by email
+      operationId: lookupUsersByEmail
+      tags: [Users]
+      responses:
+        '200': { description: Users }
+  /users/lookup/id:
+    post:
+      summary: Look up users by record name
+      operationId: lookupUsersById
+      tags: [Users]
+      responses:
+        '200': { description: Users }
+  /tokens/create:
+    post:
+      summary: Create an APNs token for subscriptions
+      operationId: createToken
+      tags: [Tokens]
+      responses:
+        '200': { description: Token created }
+  /tokens/register:
+    post:
+      summary: Register an APNs token
+      operationId: registerToken
+      tags: [Tokens]
+      responses:
+        '200': { description: Token registered }
+components:
+  securitySchemes:
+    cloudKitApiToken:
+      type: apiKey
+      in: query
+      name: ckAPIToken
+      description: |
+        CloudKit API token issued from the CloudKit dashboard, appended to
+        the request URL as `ckAPIToken`. Required for end-user authenticated
+        access via web auth tokens.
+    serverToServer:
+      type: apiKey
+      in: header
+      name: X-Apple-CloudKit-Request-SignatureV1
+      description: |
+        Server-to-server authentication uses ECDSA-signed requests with
+        `X-Apple-CloudKit-Request-KeyID`, `X-Apple-CloudKit-Request-ISO8601Date`,
+        and `X-Apple-CloudKit-Request-SignatureV1` headers.
