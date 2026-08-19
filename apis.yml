@@ -23,7 +23,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cloudkit.p
 url: https://raw.githubusercontent.com/api-evangelist/cloudkit/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-04-25'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 kind: company
 tags:
   - Apple
