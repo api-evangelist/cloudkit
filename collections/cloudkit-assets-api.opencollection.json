@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apple CloudKit Web Services Assets API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ckAPIToken",
+      "value": "{{ckAPIToken}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request asset upload URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/assets/upload"
+          },
+          "docs": "Request asset upload URLs"
+        },
+        {
+          "info": {
+            "name": "Re-reference existing assets to new records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/assets/rereference"
+          },
+          "docs": "Re-reference existing assets to new records"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

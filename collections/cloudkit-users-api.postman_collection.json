@@ -1,0 +1,480 @@
+{
+  "item": [
+    {
+      "id": "ab56f1de-6c19-465d-b36c-79b961dd7cbe",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f8e2cb7-a00d-4834-bfeb-6e7366057d79",
+          "name": "Fetch the caller's user identity",
+          "request": {
+            "name": "Fetch the caller's user identity",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "caller"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CloudKit container identifier",
+                  "type": "any",
+                  "value": "{{container}}",
+                  "key": "container"
+                },
+                {
+                  "description": " (This can only be one of development,production)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                },
+                {
+                  "description": " (This can only be one of public,private,shared)",
+                  "type": "any",
+                  "value": "{{database}}",
+                  "key": "database"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "581dbbd2-0a12-40a3-b31e-6c0c23eb6fce",
+              "name": "Caller identity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "caller"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ckAPIToken",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "CloudKit container identifier",
+                      "type": "any",
+                      "value": "{{container}}",
+                      "key": "container"
+                    },
+                    {
+                      "description": " (This can only be one of development,production)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    },
+                    {
+                      "description": " (This can only be one of public,private,shared)",
+                      "type": "any",
+                      "value": "{{database}}",
+                      "key": "database"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02ef27e8-cdda-4219-9474-c2bb3cf786fe",
+          "name": "Discover users by email or phone",
+          "request": {
+            "name": "Discover users by email or phone",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "discover"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CloudKit container identifier",
+                  "type": "any",
+                  "value": "{{container}}",
+                  "key": "container"
+                },
+                {
+                  "description": " (This can only be one of development,production)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                },
+                {
+                  "description": " (This can only be one of public,private,shared)",
+                  "type": "any",
+                  "value": "{{database}}",
+                  "key": "database"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98d669fd-37c9-44ad-82f5-a96869ccf36e",
+              "name": "Users discovered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "discover"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ckAPIToken",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "CloudKit container identifier",
+                      "type": "any",
+                      "value": "{{container}}",
+                      "key": "container"
+                    },
+                    {
+                      "description": " (This can only be one of development,production)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    },
+                    {
+                      "description": " (This can only be one of public,private,shared)",
+                      "type": "any",
+                      "value": "{{database}}",
+                      "key": "database"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5676ddc-ffa4-4520-98d4-f17232aca3a7",
+          "name": "Look up users by email",
+          "request": {
+            "name": "Look up users by email",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "lookup",
+                "email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CloudKit container identifier",
+                  "type": "any",
+                  "value": "{{container}}",
+                  "key": "container"
+                },
+                {
+                  "description": " (This can only be one of development,production)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                },
+                {
+                  "description": " (This can only be one of public,private,shared)",
+                  "type": "any",
+                  "value": "{{database}}",
+                  "key": "database"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7080470e-4c41-471a-91c8-e1c3d2ea32a4",
+              "name": "Users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "lookup",
+                    "email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ckAPIToken",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "CloudKit container identifier",
+                      "type": "any",
+                      "value": "{{container}}",
+                      "key": "container"
+                    },
+                    {
+                      "description": " (This can only be one of development,production)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    },
+                    {
+                      "description": " (This can only be one of public,private,shared)",
+                      "type": "any",
+                      "value": "{{database}}",
+                      "key": "database"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5076989-2287-4d9f-862c-2870b379ad64",
+          "name": "Look up users by record name",
+          "request": {
+            "name": "Look up users by record name",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "lookup",
+                "id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CloudKit container identifier",
+                  "type": "any",
+                  "value": "{{container}}",
+                  "key": "container"
+                },
+                {
+                  "description": " (This can only be one of development,production)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                },
+                {
+                  "description": " (This can only be one of public,private,shared)",
+                  "type": "any",
+                  "value": "{{database}}",
+                  "key": "database"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9faf1a8-5059-4a25-a78e-0c9040cecbea",
+              "name": "Users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "lookup",
+                    "id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ckAPIToken",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "CloudKit container identifier",
+                      "type": "any",
+                      "value": "{{container}}",
+                      "key": "container"
+                    },
+                    {
+                      "description": " (This can only be one of development,production)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    },
+                    {
+                      "description": " (This can only be one of public,private,shared)",
+                      "type": "any",
+                      "value": "{{database}}",
+                      "key": "database"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "CloudKit container identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "iCloud.com.example.myapp",
+      "key": "container"
+    },
+    {
+      "description": {
+        "content": " (This can only be one of development,production)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "development",
+      "key": "environment"
+    },
+    {
+      "description": {
+        "content": " (This can only be one of public,private,shared)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "public",
+      "key": "database"
+    },
+    {
+      "type": "string",
+      "value": "https://api.apple-cloudkit.com/database/1/{{container}}/{{environment}}/{{database}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ckAPIToken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f71da9c9-4992-4106-843c-2030e83c503a",
+    "name": "Apple CloudKit Web Services Assets Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of Apple CloudKit Web Services, the\nREST surface that lets non-Apple-platform clients read and write data in\na CloudKit container's public, private, or shared database. Operations\ncover records, zones, subscriptions, assets, users, and database/zone\nchanges. Authentication uses either a CloudKit API token (for end-user\nauthenticated requests; the token is appended as the `ckAPIToken` query\nparameter) or a server-to-server ECDSA signature (X-Apple-CloudKit-Request-*\nheaders) for backend access.\n\n\nContact Support:\n Name: Apple CloudKit",
+      "type": "text/plain"
+    }
+  }
+}

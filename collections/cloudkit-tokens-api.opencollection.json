@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apple CloudKit Web Services Assets Tokens API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ckAPIToken",
+      "value": "{{ckAPIToken}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an APNs token for subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/tokens/create"
+          },
+          "docs": "Create an APNs token for subscriptions"
+        },
+        {
+          "info": {
+            "name": "Register an APNs token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/tokens/register"
+          },
+          "docs": "Register an APNs token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

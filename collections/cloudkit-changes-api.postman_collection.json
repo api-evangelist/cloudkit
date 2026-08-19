@@ -1,0 +1,276 @@
+{
+  "item": [
+    {
+      "id": "604c14e0-1c56-4bd5-af9c-ec2204062ec9",
+      "name": "Changes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5a2ba0a7-5dec-4df9-8bd7-f11a0ba00504",
+          "name": "Fetch database changes",
+          "request": {
+            "name": "Fetch database changes",
+            "description": {},
+            "url": {
+              "path": [
+                "changes",
+                "database"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CloudKit container identifier",
+                  "type": "any",
+                  "value": "{{container}}",
+                  "key": "container"
+                },
+                {
+                  "description": " (This can only be one of development,production)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                },
+                {
+                  "description": " (This can only be one of public,private,shared)",
+                  "type": "any",
+                  "value": "{{database}}",
+                  "key": "database"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f4fba10-e8c6-4c7c-9804-01eb068be98f",
+              "name": "Database changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changes",
+                    "database"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ckAPIToken",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "CloudKit container identifier",
+                      "type": "any",
+                      "value": "{{container}}",
+                      "key": "container"
+                    },
+                    {
+                      "description": " (This can only be one of development,production)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    },
+                    {
+                      "description": " (This can only be one of public,private,shared)",
+                      "type": "any",
+                      "value": "{{database}}",
+                      "key": "database"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd5d1b2b-4024-4575-aac1-27e9aa12b0a5",
+          "name": "Fetch record zone changes",
+          "request": {
+            "name": "Fetch record zone changes",
+            "description": {},
+            "url": {
+              "path": [
+                "changes",
+                "zone"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CloudKit container identifier",
+                  "type": "any",
+                  "value": "{{container}}",
+                  "key": "container"
+                },
+                {
+                  "description": " (This can only be one of development,production)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                },
+                {
+                  "description": " (This can only be one of public,private,shared)",
+                  "type": "any",
+                  "value": "{{database}}",
+                  "key": "database"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "349dbdec-2b17-470e-b449-5a63ad4c20a4",
+              "name": "Zone changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changes",
+                    "zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ckAPIToken",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "CloudKit container identifier",
+                      "type": "any",
+                      "value": "{{container}}",
+                      "key": "container"
+                    },
+                    {
+                      "description": " (This can only be one of development,production)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    },
+                    {
+                      "description": " (This can only be one of public,private,shared)",
+                      "type": "any",
+                      "value": "{{database}}",
+                      "key": "database"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "CloudKit container identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "iCloud.com.example.myapp",
+      "key": "container"
+    },
+    {
+      "description": {
+        "content": " (This can only be one of development,production)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "development",
+      "key": "environment"
+    },
+    {
+      "description": {
+        "content": " (This can only be one of public,private,shared)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "public",
+      "key": "database"
+    },
+    {
+      "type": "string",
+      "value": "https://api.apple-cloudkit.com/database/1/{{container}}/{{environment}}/{{database}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ckAPIToken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5dc583b4-e54d-46d5-9647-2dec1c3d96df",
+    "name": "Apple CloudKit Web Services Assets Changes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of Apple CloudKit Web Services, the\nREST surface that lets non-Apple-platform clients read and write data in\na CloudKit container's public, private, or shared database. Operations\ncover records, zones, subscriptions, assets, users, and database/zone\nchanges. Authentication uses either a CloudKit API token (for end-user\nauthenticated requests; the token is appended as the `ckAPIToken` query\nparameter) or a server-to-server ECDSA signature (X-Apple-CloudKit-Request-*\nheaders) for backend access.\n\n\nContact Support:\n Name: Apple CloudKit",
+      "type": "text/plain"
+    }
+  }
+}

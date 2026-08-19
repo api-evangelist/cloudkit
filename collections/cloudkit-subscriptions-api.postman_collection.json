@@ -1,0 +1,376 @@
+{
+  "item": [
+    {
+      "id": "7ccdec5e-bdd3-4cea-920f-69f4c0e8b291",
+      "name": "Subscriptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a35fac2-21e8-46cb-9ba8-4afbe2941103",
+          "name": "List subscriptions",
+          "request": {
+            "name": "List subscriptions",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CloudKit container identifier",
+                  "type": "any",
+                  "value": "{{container}}",
+                  "key": "container"
+                },
+                {
+                  "description": " (This can only be one of development,production)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                },
+                {
+                  "description": " (This can only be one of public,private,shared)",
+                  "type": "any",
+                  "value": "{{database}}",
+                  "key": "database"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9bac7116-3a13-4c86-aa37-ddb4eff67c5b",
+              "name": "List of subscriptions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ckAPIToken",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "CloudKit container identifier",
+                      "type": "any",
+                      "value": "{{container}}",
+                      "key": "container"
+                    },
+                    {
+                      "description": " (This can only be one of development,production)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    },
+                    {
+                      "description": " (This can only be one of public,private,shared)",
+                      "type": "any",
+                      "value": "{{database}}",
+                      "key": "database"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5701ce20-defd-47a7-b20e-135c3689fc47",
+          "name": "Look up subscriptions by identifier",
+          "request": {
+            "name": "Look up subscriptions by identifier",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CloudKit container identifier",
+                  "type": "any",
+                  "value": "{{container}}",
+                  "key": "container"
+                },
+                {
+                  "description": " (This can only be one of development,production)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                },
+                {
+                  "description": " (This can only be one of public,private,shared)",
+                  "type": "any",
+                  "value": "{{database}}",
+                  "key": "database"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "043b0e5c-9b01-4d39-9b5c-b4370c8a2bd1",
+              "name": "Subscriptions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ckAPIToken",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "CloudKit container identifier",
+                      "type": "any",
+                      "value": "{{container}}",
+                      "key": "container"
+                    },
+                    {
+                      "description": " (This can only be one of development,production)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    },
+                    {
+                      "description": " (This can only be one of public,private,shared)",
+                      "type": "any",
+                      "value": "{{database}}",
+                      "key": "database"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "823a6bee-7c18-4152-97b9-c2b4741c6a22",
+          "name": "Create or delete subscriptions",
+          "request": {
+            "name": "Create or delete subscriptions",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                "modify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CloudKit container identifier",
+                  "type": "any",
+                  "value": "{{container}}",
+                  "key": "container"
+                },
+                {
+                  "description": " (This can only be one of development,production)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                },
+                {
+                  "description": " (This can only be one of public,private,shared)",
+                  "type": "any",
+                  "value": "{{database}}",
+                  "key": "database"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "775eb5cf-b9dd-43f7-891d-f0301959e713",
+              "name": "Modified subscriptions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    "modify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ckAPIToken",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "CloudKit container identifier",
+                      "type": "any",
+                      "value": "{{container}}",
+                      "key": "container"
+                    },
+                    {
+                      "description": " (This can only be one of development,production)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    },
+                    {
+                      "description": " (This can only be one of public,private,shared)",
+                      "type": "any",
+                      "value": "{{database}}",
+                      "key": "database"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "CloudKit container identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "iCloud.com.example.myapp",
+      "key": "container"
+    },
+    {
+      "description": {
+        "content": " (This can only be one of development,production)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "development",
+      "key": "environment"
+    },
+    {
+      "description": {
+        "content": " (This can only be one of public,private,shared)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "public",
+      "key": "database"
+    },
+    {
+      "type": "string",
+      "value": "https://api.apple-cloudkit.com/database/1/{{container}}/{{environment}}/{{database}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ckAPIToken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e6116965-9872-4053-adcd-01a324cf634c",
+    "name": "Apple CloudKit Web Services Assets Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of Apple CloudKit Web Services, the\nREST surface that lets non-Apple-platform clients read and write data in\na CloudKit container's public, private, or shared database. Operations\ncover records, zones, subscriptions, assets, users, and database/zone\nchanges. Authentication uses either a CloudKit API token (for end-user\nauthenticated requests; the token is appended as the `ckAPIToken` query\nparameter) or a server-to-server ECDSA signature (X-Apple-CloudKit-Request-*\nheaders) for backend access.\n\n\nContact Support:\n Name: Apple CloudKit",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apple CloudKit Web Services Assets Changes API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ckAPIToken",
+      "value": "{{ckAPIToken}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Changes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch database changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/changes/database"
+          },
+          "docs": "Fetch database changes"
+        },
+        {
+          "info": {
+            "name": "Fetch record zone changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/changes/zone"
+          },
+          "docs": "Fetch record zone changes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

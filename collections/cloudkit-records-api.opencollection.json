@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apple CloudKit Web Services Assets Records API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ckAPIToken",
+      "value": "{{ckAPIToken}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create, update, or delete records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/modify"
+          },
+          "docs": "Create, update, or delete records"
+        },
+        {
+          "info": {
+            "name": "Query records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/query"
+          },
+          "docs": "Query records"
+        },
+        {
+          "info": {
+            "name": "Look up records by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/lookup"
+          },
+          "docs": "Look up records by name"
+        },
+        {
+          "info": {
+            "name": "Fetch record changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/changes"
+          },
+          "docs": "Fetch record changes"
+        },
+        {
+          "info": {
+            "name": "Resolve record information for share URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/resolve"
+          },
+          "docs": "Resolve record information for share URLs"
+        },
+        {
+          "info": {
+            "name": "Accept share records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/accept"
+          },
+          "docs": "Accept share records"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

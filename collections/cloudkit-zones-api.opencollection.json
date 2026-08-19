@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apple CloudKit Web Services Assets Zones API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ckAPIToken",
+      "value": "{{ckAPIToken}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List zones in the database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/zones/list"
+          },
+          "docs": "List zones in the database"
+        },
+        {
+          "info": {
+            "name": "Look up zones by identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/zones/lookup"
+          },
+          "docs": "Look up zones by identifier"
+        },
+        {
+          "info": {
+            "name": "Create or delete zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/zones/modify"
+          },
+          "docs": "Create or delete zones"
+        },
+        {
+          "info": {
+            "name": "Fetch zone changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/zones/changes"
+          },
+          "docs": "Fetch zone changes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
