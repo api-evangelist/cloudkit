@@ -41,6 +41,11 @@ apis:
   - REST
   - Records
   - Zones
+  - Subscription
+  tags_raw:
+  - REST
+  - Records
+  - Zones
   - Subscriptions
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.apple-cloudkit.com/database/1
@@ -131,6 +136,8 @@ apis:
     https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
   baseURL: https://api.apple-cloudkit.com/database/1
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -153,6 +160,8 @@ apis:
     https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
   baseURL: https://api.apple-cloudkit.com/database/1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
