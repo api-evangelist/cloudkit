@@ -7,6 +7,17 @@ description: >-
   accepts either an API token (for end-user-authenticated access) or a server-to- server ECDSA key for backend access.
   Operations cover records, zones, subscriptions, assets, users, and database changes.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
