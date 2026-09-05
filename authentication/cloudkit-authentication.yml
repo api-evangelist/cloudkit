@@ -1,30 +1,90 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/cloudkit-openapi.yml
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html,
+  https://developer.apple.com/documentation/cloudkit/obtaining-an-api-token-for-an-icloud-container,
+  https://developer.apple.com/icloud/ck-tool/, openapi/_original/cloudkit-openapi.yml
+docs: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html
 summary:
   types:
   - apiKey
+  - signature
   api_key_in:
-  - header
   - query
+  - header
+  oauth2: false
+  openid_connect: false
+  mtls: false
+  note: >-
+    Three distinct credentials, and Apple states two of them MUST NOT be combined in one request: an API
+    token (+ optional user web-auth token) for user-facing access, an ECDSA server-to-server key for
+    backend access, and a management token used only by cktool / CKTool JS against the CloudKit
+    Management API.
 schemes:
 - name: cloudKitApiToken
   type: apiKey
   in: query
   parameter: ckAPIToken
-  description: |-
-    CloudKit API token issued from the CloudKit dashboard, appended to
-    the request URL as `ckAPIToken`. Required for end-user authenticated
-    access via web auth tokens.
+  issued_from: CloudKit Console (per container)
+  description: >-
+    CloudKit API token created in the CloudKit Console and appended to the request URL as
+    `?ckAPIToken=[API token]`. Identifies the app; on its own it grants only what the public database
+    allows to an unauthenticated caller.
   sources:
-  - openapi/cloudkit-openapi.yml
+  - https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html
+- name: ckWebAuthToken
+  type: apiKey
+  in: query
+  parameter: ckWebAuthToken
+  description: >-
+    End-user session token appended alongside ckAPIToken. Obtained by making the request without it,
+    receiving AUTHENTICATION_REQUIRED (HTTP 421) with a `redirectURL`, opening that URL so Apple can
+    present its own sign-in dialog, and reading the token back from the callback (URL parameter or a
+    `message` event carrying `e.data.ckWebAuthToken`). Must be URL-encoded when appended — Apple calls
+    out replacing `+` with `%2B`, `/` with `%2F` and `=` with `%3D`.
+  lifetime: >-
+    Default expiration 30 minutes after creation; two weeks if the user selects "Keep me signed in".
+    Each token is for a single round trip.
+  sources:
+  - https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html
 - name: serverToServer
   type: apiKey
   in: header
   parameter: X-Apple-CloudKit-Request-SignatureV1
-  description: |-
-    Server-to-server authentication uses ECDSA-signed requests with
-    `X-Apple-CloudKit-Request-KeyID`, `X-Apple-CloudKit-Request-ISO8601Date`,
-    and `X-Apple-CloudKit-Request-SignatureV1` headers.
+  description: >-
+    Server-to-server access signs each request with an ECDSA (prime256v1) private key whose public half
+    was uploaded to the CloudKit Console in exchange for a Key ID. The signed message is
+    `[ISO8601 date]:[base64 SHA-256 of the request body]:[URL subpath]`.
+  headers:
+  - X-Apple-CloudKit-Request-KeyID
+  - X-Apple-CloudKit-Request-ISO8601Date
+  - X-Apple-CloudKit-Request-SignatureV1
+  key_generation: openssl ecparam -name prime256v1 -genkey -noout -out eckey.pem
+  constraints:
+  - Signed requests expire 10 minutes after their ISO8601 date; server clock accuracy matters.
+  - Do NOT include the ckAPIToken subpath in a server-to-server request — Apple states it will fail.
+  - Do NOT mix API-token and server-to-server authentication in the same request.
   sources:
-  - openapi/cloudkit-openapi.yml
+  - https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html
+- name: managementToken
+  type: apiKey
+  in: header
+  parameter: null
+  scope: CloudKit Management API (schema operations via cktool / CKTool JS), not the database API
+  description: >-
+    Generated in the CloudKit Console under Settings for your user account and shown only once. cktool
+    stores management and user tokens in the macOS Keychain via `xcrun cktool save-token`.
+  sources:
+  - https://developer.apple.com/icloud/ck-tool/
+scopes:
+  published: false
+  note: >-
+    No OAuth scopes exist. Authorization is decided by which database is addressed in the URL (public /
+    private / shared), by the container's per-record-type security roles configured in the CloudKit
+    Console, and by the record-level publicPermission value (NONE / READ_ONLY / READ_WRITE). Failures
+    surface as ACCESS_DENIED (HTTP 403).
+rotation:
+  documented: false
+  note: >-
+    No documented rotation or expiry policy for API tokens or server-to-server keys; both are revoked by
+    deleting them in the CloudKit Console. Only the user web-auth token has a stated lifetime.

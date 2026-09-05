@@ -1,0 +1,138 @@
+generated: '2026-09-05'
+method: probed
+source: live GET of the named /.well-known/ paths on every host this record knows
+note: >-
+  Eight hosts probed on 2026-09-05 (registrable domain + www, the API base host, the CloudKit JS CDN,
+  the docs host and the console host). One real document was served: RFC 9116 security.txt at
+  www.apple.com, saved verbatim as cloudkit-security.txt. api.apple-cloudkit.com answers 400 to every
+  path outside its /database/1/... contract, so its 400s are a routing refusal, not a document.
+  developer.apple.com answers 300 with an HTML page for every /.well-known/ path — an HTML shell, not a
+  document, and recorded as a miss. No /.well-known/api-catalog, openid-configuration,
+  oauth-authorization-server, oauth-protected-resource, ai-plugin.json, agent-card.json or agent.json
+  exists on any host.
+hosts:
+- host: www.apple.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    file: cloudkit-security.txt
+- host: apple.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    note: redirects to https://www.apple.com/.well-known/security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: api.apple-cloudkit.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 400
+  - path: /.well-known/openid-configuration
+    status: 400
+  - path: /.well-known/oauth-authorization-server
+    status: 400
+  - path: /.well-known/oauth-protected-resource
+    status: 400
+  - path: /.well-known/api-catalog
+    status: 400
+  - path: /.well-known/ai-plugin.json
+    status: 400
+  - path: /.well-known/agent-card.json
+    status: 400
+  - path: /.well-known/agent.json
+    status: 400
+- host: developer.apple.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 300
+    note: HTML page, not a document
+  - path: /.well-known/openid-configuration
+    status: 300
+    note: HTML page, not a document
+  - path: /.well-known/oauth-authorization-server
+    status: 300
+    note: HTML page, not a document
+  - path: /.well-known/oauth-protected-resource
+    status: 300
+    note: HTML page, not a document
+  - path: /.well-known/api-catalog
+    status: 300
+    note: HTML page, not a document
+  - path: /.well-known/ai-plugin.json
+    status: 300
+    note: HTML page, not a document
+  - path: /.well-known/agent-card.json
+    status: 300
+    note: HTML page, not a document
+  - path: /.well-known/agent.json
+    status: 300
+    note: HTML page, not a document
+- host: www.icloud.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: icloud.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: cdn.apple-cloudkit.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: icloud.developer.apple.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404

@@ -1,0 +1,144 @@
+generated: '2026-09-05'
+method: derived
+source: openapi/cloudkit-*-openapi.yml
+status: candidate
+note: >-
+  Apple ships NO MCP server for CloudKit. Searched 2026-09-05: no first-party server on Apple's docs or
+  GitHub org, nothing at any /mcp path on api.apple-cloudkit.com (every non-/database path answers 400),
+  and no MCP mention in the CloudKit or CKTool JS documentation. Third-party Apple-adjacent servers
+  exist (apple-docs-mcp, apple-mcp, xcode-mcp-server) but none is Apple's and none wraps CloudKit Web
+  Services, so none is recorded as this provider's surface. The tools below are a CANDIDATE mapping
+  derived from the operations in this repo's OpenAPI — nobody serves them.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: derived
+server:
+  name: cloudkit-web-services (candidate)
+  vendor_published: false
+  transport: null
+auth_if_built:
+  note: >-
+    A server built against this surface would carry either a container API token plus a per-user
+    ckWebAuthToken (interactive) or an ECDSA server-to-server key (headless). See
+    ../authentication/cloudkit-authentication.yml.
+tools:
+- name: query_records
+  rest: queryRecords
+  path: /records/query
+  description: Query records in a database by record type, filter and sort, with cursor pagination.
+  consequence: read
+- name: lookup_records
+  rest: lookupRecords
+  path: /records/lookup
+  description: Fetch records by record name.
+  consequence: read
+- name: modify_records
+  rest: modifyRecords
+  path: /records/modify
+  description: Create, update or delete records in a batch of up to 200 operations.
+  consequence: write-destructive
+- name: fetch_record_changes
+  rest: recordChanges
+  path: /records/changes
+  description: Fetch record changes since a sync token.
+  consequence: read
+- name: resolve_records
+  rest: resolveRecords
+  path: /records/resolve
+  description: Resolve record information for share URLs.
+  consequence: read
+- name: accept_share
+  rest: acceptShare
+  path: /records/accept
+  description: Accept share records on behalf of the signed-in user.
+  consequence: write
+- name: list_zones
+  rest: listZones
+  path: /zones/list
+  description: List the record zones in a database.
+  consequence: read
+- name: lookup_zones
+  rest: lookupZones
+  path: /zones/lookup
+  description: Look up zones by identifier.
+  consequence: read
+- name: modify_zones
+  rest: modifyZones
+  path: /zones/modify
+  description: Create or delete record zones.
+  consequence: write-destructive
+- name: fetch_zone_changes
+  rest: zoneChanges
+  path: /zones/changes
+  description: Fetch changes for a zone.
+  consequence: read
+- name: fetch_database_changes
+  rest: databaseChanges
+  path: /changes/database
+  description: Fetch database-level changes since a sync token.
+  consequence: read
+- name: fetch_zone_record_changes
+  rest: zoneRecordChanges
+  path: /changes/zone
+  description: Fetch record changes within a zone since a sync token.
+  consequence: read
+- name: upload_assets
+  rest: uploadAssets
+  path: /assets/upload
+  description: Request asset upload URLs.
+  consequence: write
+- name: rereference_assets
+  rest: rereferenceAssets
+  path: /assets/rereference
+  description: Re-reference existing assets to new records.
+  consequence: write
+- name: list_subscriptions
+  rest: listSubscriptions
+  path: /subscriptions/list
+  description: List subscriptions in a database.
+  consequence: read
+- name: lookup_subscriptions
+  rest: lookupSubscriptions
+  path: /subscriptions/lookup
+  description: Look up subscriptions by identifier.
+  consequence: read
+- name: modify_subscriptions
+  rest: modifySubscriptions
+  path: /subscriptions/modify
+  description: Create or delete subscriptions.
+  consequence: write-destructive
+- name: fetch_caller_user
+  rest: callerUser
+  path: /users/caller
+  description: Fetch the calling user's identity.
+  consequence: read
+- name: discover_users
+  rest: discoverUsers
+  path: /users/discover
+  description: Discover user identities by email or phone number.
+  consequence: read-sensitive
+- name: lookup_users_by_email
+  rest: lookupUsersByEmail
+  path: /users/lookup/email
+  description: Look up users by email address.
+  consequence: read-sensitive
+- name: lookup_users_by_id
+  rest: lookupUsersById
+  path: /users/lookup/id
+  description: Look up users by user record name.
+  consequence: read-sensitive
+- name: create_token
+  rest: createToken
+  path: /tokens/create
+  description: Create an APNs token for subscription delivery.
+  consequence: write
+- name: register_token
+  rest: registerToken
+  path: /tokens/register
+  description: Register an APNs token.
+  consequence: write
+tool_count: 23

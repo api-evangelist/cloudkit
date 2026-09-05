@@ -1,0 +1,86 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://support.apple.com/guide/certifications/apple-internet-services-security-apc34d2c0468b/1/web/1.0,
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/,
+  openapi/_original/cloudkit-openapi.yml
+note: >-
+  Every `conforms: true` entry below points at a document Apple publishes. The `conforms: false` entries
+  are recorded because their absence is a real finding for an integrator, not to pad the list. CloudKit
+  serves general-purpose app data sync; its market has no domain data standard (no FHIR/SCIM/OData/
+  OpenRTB analogue), so `domain_standard` is recorded as not-applicable rather than invented.
+conformance:
+- id: iso-27001
+  name: ISO/IEC 27001
+  conforms: true
+  evidence: https://support.apple.com/guide/certifications/apple-internet-services-security-apc34d2c0468b/1/web/1.0
+  note: Apple internet services certification with iCloud explicitly in scope; registrar Coalfire.
+- id: iso-27018
+  name: ISO/IEC 27018
+  conforms: true
+  evidence: https://support.apple.com/guide/certifications/apple-internet-services-security-apc34d2c0468b/1/web/1.0
+  note: PII protection in public cloud, same iCloud scope.
+- id: tls-1-2-plus
+  name: TLS 1.2+ on all API hosts
+  conforms: true
+  evidence: security/cloudkit-domain-security.yml (probed TLSv1.3 on api.apple-cloudkit.com, www.icloud.com, developer.apple.com)
+- id: rfc9116
+  name: RFC 9116 security.txt
+  conforms: true
+  evidence: https://www.apple.com/.well-known/security.txt
+  note: Served with Contact, Policy, Acknowledgments and Expires fields.
+- id: ecdsa-request-signing
+  name: ECDSA (prime256v1) request signing for server-to-server auth
+  conforms: true
+  evidence: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html
+  note: >-
+    Apple's own signing scheme (X-Apple-CloudKit-Request-SignatureV1 over date:body-hash:subpath), not
+    an IETF profile such as RFC 9421 HTTP Message Signatures.
+- id: cursor-pagination
+  name: Cursor pagination
+  conforms: true
+  evidence: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/QueryingRecords.html
+  note: resultsLimit + continuationMarker.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: >-
+    No oauth2 securityScheme in any spec; no /.well-known/oauth-authorization-server or
+    oauth-protected-resource on any host (all 404/400, see well-known/cloudkit-well-known.yml).
+  note: End-user auth is Apple's own ckWebAuthToken redirect flow, not an OAuth authorization code grant.
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence: /.well-known/openid-configuration returned 404 or 400 on every host probed 2026-09-05.
+  note: >-
+    Sign in with Apple is an OIDC provider, but it is a different Apple product on a different host and
+    is not the CloudKit Web Services auth mechanism.
+- id: rfc9457
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence: errors/cloudkit-problem-types.yml
+  note: Errors use a custom JSON envelope (uuid/serverErrorCode/reason/retryAfter/redirectURL).
+- id: idempotency-key
+  name: Idempotency-Key header
+  conforms: false
+  evidence: conventions/cloudkit-conventions.yml
+  note: Optimistic concurrency via recordChangeTag instead; no replay key.
+- id: rfc8594
+  name: RFC 8594 Sunset header / deprecation policy
+  conforms: false
+  evidence: lifecycle/cloudkit-lifecycle.yml
+- id: json-api
+  name: JSON:API
+  conforms: false
+  evidence: RPC-style operation paths with custom envelopes.
+- id: openapi
+  name: Provider-published OpenAPI
+  conforms: false
+  evidence: >-
+    /openapi.json, /openapi.yaml, /swagger.json, /api-docs, /docs on api.apple-cloudkit.com all return
+    400; developer.apple.com/openapi.json returns 404. Apple publishes the contract as prose only.
+domain_standard:
+  applicable: false
+  note: >-
+    General-purpose cloud data storage and sync. No sector data-interchange standard (health, finance,
+    education, advertising, telemetry) applies to this surface, and none is claimed by Apple.

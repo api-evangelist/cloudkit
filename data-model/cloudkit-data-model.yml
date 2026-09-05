@@ -1,0 +1,125 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/Types.html
+  (entity + field names read from Apple's dictionary reference); relationships derived from the
+  documented id-reference fields and from openapi/_original/cloudkit-openapi.yml
+note: >-
+  CloudKit Web Services returns untyped JSON dictionaries rather than named schemas, so this graph is
+  read from Apple's "Reference Types and Dictionaries" chapter, not from components.schemas — the
+  repository's OpenAPI carries no schema components to derive from. Record TYPES themselves are
+  developer-defined per container; only the system envelope is fixed and modelled here.
+entities:
+- name: Container
+  identifier: container id, always prefixed "iCloud." (e.g. iCloud.com.example.app)
+  note: Named in the URL path, not returned as a dictionary.
+- name: Database
+  identifier: public | private | shared
+  note: URL path segment. Access rules differ per database.
+- name: Zone
+  dictionary: Zone Dictionary
+  fields: [zoneID, syncToken, atomic]
+- name: ZoneID
+  dictionary: Zone ID Dictionary
+  fields: [zoneName, ownerRecordName]
+  defaults: {zoneName: _defaultZone}
+- name: Record
+  dictionary: Record Dictionary
+  fields: [recordName, recordType, recordChangeTag, fields, created, modified, deleted, shortGUID, parent, share, publicPermission, participants, currentUserParticipant, owner]
+- name: RecordField
+  dictionary: CKValue
+  types: [String, Number, Boolean, Reference, Asset, Location, Array]
+- name: Reference
+  dictionary: Reference Dictionary
+  fields: [recordName, zoneID, action]
+- name: Asset
+  dictionary: Asset Dictionary
+  note: Uploaded through /assets/upload, then attached to a record field; re-attached via /assets/rereference.
+- name: Subscription
+  dictionary: Subscription Dictionary
+  note: Bound to a zone/record type; fires push through APNs.
+- name: NotificationInfo
+  dictionary: Notification Info Dictionary
+- name: Query
+  dictionary: Query Dictionary
+  fields: [recordType, filterBy, sortBy]
+- name: Filter
+  dictionary: Filter Dictionary
+- name: SortDescriptor
+  dictionary: Sort Descriptor Dictionary
+- name: User
+  dictionary: User Dictionary
+- name: UserIdentity
+  dictionary: User Identity Dictionary
+- name: NameComponents
+  dictionary: Name Components Dictionary
+- name: ShareParticipant
+  dictionary: Share Participant Dictionary
+  fields: [userIdentity, permission, acceptanceStatus]
+- name: ShortGUID
+  dictionary: ShortGUID Dictionary
+- name: Location
+  dictionary: Location Dictionary
+relationships:
+- from: Container
+  to: Database
+  type: has_many
+  via: URL path segment (public | private | shared)
+- from: Database
+  to: Zone
+  type: has_many
+  via: zoneID
+- from: Zone
+  to: Record
+  type: has_many
+  via: zoneID
+- from: Record
+  to: Record
+  type: belongs_to
+  via: parent (Reference to the parent record's recordName)
+- from: Record
+  to: Record
+  type: has_one
+  via: share (Reference to the share record)
+- from: Record
+  to: Reference
+  type: has_many
+  via: fields of type REFERENCE
+- from: Reference
+  to: Record
+  type: belongs_to
+  via: recordName + zoneID
+- from: Record
+  to: Asset
+  type: has_many
+  via: fields of type ASSET
+- from: Record
+  to: ShortGUID
+  type: has_one
+  via: shortGUID (created when createShortGUID is true)
+- from: Share
+  to: ShareParticipant
+  type: has_many
+  via: participants
+- from: ShareParticipant
+  to: UserIdentity
+  type: has_one
+  via: userIdentity
+- from: Zone
+  to: Subscription
+  type: has_many
+  via: zoneID on the subscription
+- from: Record
+  to: User
+  type: belongs_to
+  via: created.userRecordName / modified.userRecordName
+identifiers:
+  record: recordName (UUID by default; caller may supply one, which is the only way to make a create replayable)
+  zone: zoneName + ownerRecordName
+  change_token_record: recordChangeTag
+  change_token_zone: syncToken
+  note: >-
+    Two different change tokens: recordChangeTag guards a single record on write, syncToken drives
+    zones/changes and changes/database incremental sync.
+permissions:
+  record_public_permission: [NONE, READ_ONLY, READ_WRITE, UNKNOWN]

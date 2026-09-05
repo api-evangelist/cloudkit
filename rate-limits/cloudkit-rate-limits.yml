@@ -1,0 +1,51 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/PropertyMetrics.html,
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/ErrorCodes.html
+limit_count: 6
+note: >-
+  Apple publishes SIZE and BATCH limits for CloudKit Web Services, not a requests-per-second rate. There
+  is no documented quota table, no published per-key or per-container request ceiling, and the API
+  returns no RateLimit-*/X-RateLimit-* headers. The only runtime throttle signal is the THROTTLED error
+  (HTTP 429) carrying a `retryAfter` value IN THE JSON BODY — an agent cannot read a header to pace
+  itself here.
+response_headers:
+  documented: false
+  observed: []
+  note: >-
+    No rate-limit response headers are documented by Apple and none were observable anonymously — every
+    unauthenticated request to api.apple-cloudkit.com is refused with 400 before a limit applies.
+exhaustion:
+  status: 429
+  error_code: THROTTLED
+  retry_signal: retryAfter (seconds, in the JSON error body)
+  secondary:
+    status: 413
+    error_code: QUOTA_EXCEEDED
+    note: Public-database app quota or the end user's private iCloud storage quota, depending on database.
+limits:
+- name: Maximum number of operations in a request
+  scope: per-request
+  limit: 200
+  unit: operations
+- name: Maximum number of records in a response
+  scope: per-response
+  limit: 200
+  unit: records
+- name: Maximum number of tokens in a request
+  scope: per-request
+  limit: 200
+  unit: tokens
+- name: Maximum record size (not including Asset fields)
+  scope: per-record
+  limit: 1
+  unit: MB
+- name: Maximum file size of an Asset field
+  scope: per-asset
+  limit: 50
+  unit: MB
+- name: Maximum number of source references to a single target where the action is delete self
+  scope: per-record
+  limit: 750
+  unit: references

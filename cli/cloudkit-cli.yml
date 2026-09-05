@@ -1,0 +1,64 @@
+generated: '2026-09-05'
+method: searched
+source: https://developer.apple.com/icloud/ck-tool/, https://developer.apple.com/icloud/cloudkit/automating/
+name: cktool
+invocation: xcrun cktool
+official: true
+published: true
+note: >-
+  cktool is Apple's first-party CloudKit command-line tool. It is stateless and passes every operation
+  to the CloudKit Management API in single operations. It talks to the management surface, not to the
+  CloudKit Web Services database API described in openapi/ — the two are different contracts against the
+  same data.
+install:
+- method: bundled
+  detail: Distributed with Xcode 13 and later, available on the Mac App Store. No separate download.
+  requirement: Current membership of the Apple Developer Program or Apple Developer Enterprise Program.
+authentication:
+  tokens:
+  - type: management
+    used_for: schema management commands
+    issued_from: CloudKit Console → Settings for your user account
+    note: Shown once at creation; not retrievable afterwards.
+  - type: user
+    used_for: data commands against public and private databases on behalf of the user
+    note: Short-lived — Apple warns that frequent interactive re-authentication may be required.
+  storage: macOS Keychain
+  command: xcrun cktool save-token --type [management | user]
+commands:
+- group: auth
+  name: save-token
+  usage: xcrun cktool save-token --type [management | user]
+  description: Launches CloudKit Console to copy the appropriate token and stores it in the Keychain.
+- group: schema
+  name: reset --schema
+  usage: xcrun cktool reset --schema --team-id [TEAM-ID] --container-id [CONTAINER]
+  description: Reverts the development database schema to the current production definition.
+  token: management
+- group: schema
+  name: export --schema
+  usage: xcrun cktool export --schema --team-id [TEAM-ID] --container-id [CONTAINER] --environment [development | production] [--output-file schema.ckdb]
+  description: Saves an existing CloudKit database schema definition to a file that can be kept alongside source.
+  token: management
+- group: schema
+  name: import --schema
+  usage: xcrun cktool import --schema --team-id [TEAM-ID] --container-id [CONTAINER] --environment development --file schema.ckdb
+  description: Applies a file-based schema definition against the development database for testing.
+  token: management
+- group: data
+  name: query-records
+  usage: xcrun cktool query-records --team-id [TEAMID] --container-id [CONTAINER] --zone-name [ZONE_NAME] --database-type [public | private] --environment [development | production] --record-type [RECORD_TYPE] [--filters [FILTER_1] [FILTER_2]]
+  description: >-
+    Queries records. Unfiltered queries require a Queryable index on ___recordID, as do any fields named
+    in --filters. Filters take the form "[FIELD_NAME] [OPERATOR] [VALUE]", e.g. "lastname == Appleseed".
+  token: user
+- group: data
+  name: create-record
+  usage: xcrun cktool create-record --team-id [TEAM_ID] --container-id [CONTAINER] --zone-name [ZONE_NAME] --database-type [public | private] --environment [development | production] --record-type [RECORD_TYPE] [--fields-json [FIELDS_JSON]]
+  description: Inserts a record; --fields-json takes a JSON representation of the fields to set.
+  token: user
+help: xcrun cktool --help
+javascript_equivalent:
+  name: CKTool JS
+  docs: https://developer.apple.com/documentation/cktooljs
+  packages: ../packages/cloudkit-packages.yml

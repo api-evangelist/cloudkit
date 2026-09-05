@@ -1,0 +1,96 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://developer.apple.com/documentation/cktooljs, https://registry.npmjs.org/@apple/cktool.database,
+  https://cdn.apple-cloudkit.com/ck/2/cloudkit.js, https://developer.apple.com/icloud/ck-tool/
+note: >-
+  Apple ships no CloudKit client library on any language registry for the CloudKit Web Services REST
+  surface itself. The first-party distribution is (a) CloudKit JS, served from Apple's own CDN as an
+  unversioned script URL, (b) the four CKTool JS packages Apple publishes to npm under the @apple
+  scope, and (c) the native CloudKit framework, which ships inside the Apple platform SDKs rather than
+  through a package registry. npm searches for "cloudkit" return only third-party wrappers
+  (tsl-apple-cloudkit, expo-cloudkit, capacitor-cloudkit) — none are Apple's and none are recorded here.
+official_count: 6
+packages:
+- name: CloudKit JS
+  language: javascript
+  registry: cdn
+  url: https://cdn.apple-cloudkit.com/ck/2/cloudkit.js
+  docs: https://developer.apple.com/documentation/cloudkitjs
+  official: true
+  version: 2.5.7
+  published: null
+  note: >-
+    Read from the `version:"2.5.7"` string inside the served bundle (HTTP 200, application/javascript,
+    173,391 bytes, fetched 2026-09-05). The distribution URL is UNPINNED — the path segment `ck/2` is a
+    major version only, so the exact build floats and a consumer cannot tell which release they loaded.
+    Apple publishes no release date and no changelog for the file; `published: null` means checked and
+    nothing to record, not unchecked.
+- name: '@apple/cktool.database'
+  language: javascript
+  registry: npm
+  url: https://www.npmjs.com/package/@apple/cktool.database
+  docs: https://developer.apple.com/documentation/cktooljs
+  official: true
+  version: 1.3.2
+  published: '2022-06-03'
+  first_published: '2021-11-30'
+  note: >-
+    CKTool JS main package — the scripted client for the CloudKit Management API used for schema
+    import/export, reset and test-data loading. Version and date read from registry.npmjs.org metadata
+    on 2026-09-05. Four years without a release is the strongest currency signal on this provider.
+- name: '@apple/cktool.target.nodejs'
+  language: javascript
+  registry: npm
+  url: https://www.npmjs.com/package/@apple/cktool.target.nodejs
+  official: true
+  version: 1.3.2
+  published: '2022-06-03'
+  note: CKTool JS Node.js target support.
+- name: '@apple/cktool.target.browser'
+  language: javascript
+  registry: npm
+  url: https://www.npmjs.com/package/@apple/cktool.target.browser
+  official: true
+  version: 1.3.2
+  published: '2022-06-03'
+  note: CKTool JS web-browser target support.
+- name: '@apple/cktool.core'
+  language: javascript
+  registry: npm
+  url: https://www.npmjs.com/package/@apple/cktool.core
+  official: true
+  version: 1.3.2
+  published: '2022-06-03'
+  note: CKTool JS client library runtime support.
+- name: CloudKit (framework)
+  language: swift
+  registry: platform-sdk
+  url: https://developer.apple.com/documentation/cloudkit
+  official: true
+  version: null
+  published: null
+  note: >-
+    The native CloudKit framework is versioned with iOS/iPadOS/macOS/tvOS/watchOS/visionOS and shipped
+    inside the Apple SDKs in Xcode. There is no package registry entry to query, so version/published
+    are null by construction rather than unknown.
+samples:
+  note: >-
+    Apple publishes nine first-party CloudKit sample repositories under github.com/apple. They are
+    example apps, not client libraries, so they are recorded here rather than as packages.
+  repositories:
+  - https://github.com/apple/sample-cloudkit-sharing
+  - https://github.com/apple/sample-cloudkit-coredatasync
+  - https://github.com/apple/sample-cloudkit-privatedb
+  - https://github.com/apple/sample-cloudkit-privatedb-sync
+  - https://github.com/apple/sample-cloudkit-sync-engine
+  - https://github.com/apple/sample-cloudkit-queries
+  - https://github.com/apple/sample-cloudkit-encryption
+  - https://github.com/apple/sample-cloudkit-zonesharing
+  - https://github.com/apple/sample-cloudkit-tooling
+third_party_observed:
+  note: Recorded for completeness only; not Apple-published, not counted as SDKs.
+  packages:
+  - tsl-apple-cloudkit (npm, 0.2.34, 2025-07-06)
+  - expo-cloudkit (npm, 0.20.8, 2026-04-05)
+  - capacitor-cloudkit (npm, 4.0.0, 2025-09-04)

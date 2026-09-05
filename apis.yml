@@ -34,7 +34,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cloudkit.png
 url: https://raw.githubusercontent.com/api-evangelist/cloudkit/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-04-25'
+modified: '2026-09-05'
 specificationVersion: '0.23'
 kind: company
 tags:
@@ -69,10 +69,10 @@ apis:
     type: Documentation
   - url: >-
       https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html
-    type: Setup
+    type: GettingStarted
   - url: >-
       https://developer.apple.com/documentation/cloudkit/obtaining-an-api-token-for-an-icloud-container
-    type: API Tokens
+    type: APIKeys
   description: >-
     The CloudKit Web Services REST API is structured as /database/1/{container}/{environment}/{database}/{operation},
     where database is one of public, private, or shared and environment is development or production.
@@ -87,6 +87,7 @@ apis:
   - Web
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.apple.com/documentation/cloudkitjs
+  baseURL: https://api.apple-cloudkit.com/database/1
   properties:
   - url: https://developer.apple.com/documentation/cloudkitjs
     type: Documentation
@@ -114,39 +115,49 @@ apis:
   humanURL: >-
     https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
   baseURL: https://api.apple-cloudkit.com/database/1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
   - Assets
   properties:
   - type: OpenAPI
     url: openapi/cloudkit-assets-api-openapi.yml
+  - type: Overlay
+    url: overlays/cloudkit-assets-api-overlay.yaml
 - aid: cloudkit:cloudkit-changes-api
   name: Apple CloudKit Changes API
   description: The Changes API from Apple CloudKit — 2 operation(s) for changes.
   humanURL: >-
     https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
   baseURL: https://api.apple-cloudkit.com/database/1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
   - Changes
   properties:
   - type: OpenAPI
     url: openapi/cloudkit-changes-api-openapi.yml
+  - type: Overlay
+    url: overlays/cloudkit-changes-api-overlay.yaml
 - aid: cloudkit:cloudkit-records-api
   name: Apple CloudKit Records API
   description: The Records API from Apple CloudKit — 6 operation(s) for records.
   humanURL: >-
     https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
   baseURL: https://api.apple-cloudkit.com/database/1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
   - Records
   properties:
   - type: OpenAPI
     url: openapi/cloudkit-records-api-openapi.yml
+  - type: Overlay
+    url: overlays/cloudkit-records-api-overlay.yaml
 - aid: cloudkit:cloudkit-subscriptions-api
   name: Apple CloudKit Subscriptions API
   description: The Subscriptions API from Apple CloudKit — 3 operation(s) for subscriptions.
   humanURL: >-
     https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
   baseURL: https://api.apple-cloudkit.com/database/1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
   - Subscription
   tags_raw:
@@ -154,23 +165,29 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/cloudkit-subscriptions-api-openapi.yml
+  - type: Overlay
+    url: overlays/cloudkit-subscriptions-api-overlay.yaml
 - aid: cloudkit:cloudkit-tokens-api
   name: Apple CloudKit Tokens API
   description: The Tokens API from Apple CloudKit — 2 operation(s) for tokens.
   humanURL: >-
     https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
   baseURL: https://api.apple-cloudkit.com/database/1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
   - Tokens
   properties:
   - type: OpenAPI
     url: openapi/cloudkit-tokens-api-openapi.yml
+  - type: Overlay
+    url: overlays/cloudkit-tokens-api-overlay.yaml
 - aid: cloudkit:cloudkit-users-api
   name: Apple CloudKit Users API
   description: The Users API from Apple CloudKit — 4 operation(s) for users.
   humanURL: >-
     https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
   baseURL: https://api.apple-cloudkit.com/database/1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
   - User
   tags_raw:
@@ -178,17 +195,22 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/cloudkit-users-api-openapi.yml
+  - type: Overlay
+    url: overlays/cloudkit-users-api-overlay.yaml
 - aid: cloudkit:cloudkit-zones-api
   name: Apple CloudKit Zones API
   description: The Zones API from Apple CloudKit — 4 operation(s) for zones.
   humanURL: >-
     https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
   baseURL: https://api.apple-cloudkit.com/database/1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
   - Zones
   properties:
   - type: OpenAPI
     url: openapi/cloudkit-zones-api-openapi.yml
+  - type: Overlay
+    url: overlays/cloudkit-zones-api-overlay.yaml
 common:
   - type: AgenticAccess
     url: agentic-access/cloudkit-agentic-access.yml
@@ -198,8 +220,6 @@ common:
     url: authentication/cloudkit-authentication.yml
   - type: Website
     url: https://www.icloud.com/
-  - type: Developer
-    url: https://developer.apple.com/icloud/cloudkit/
   - type: Documentation
     url: https://developer.apple.com/documentation/cloudkit
   - type: Console
@@ -210,6 +230,75 @@ common:
     url: json-ld/cloudkit-context.jsonld
   - type: Spectral
     url: rules/cloudkit-rules.yml
+  - type: Packages
+    url: packages/cloudkit-packages.yml
+  - type: SDKs
+    url: packages/cloudkit-packages.yml
+  - type: WellKnown
+    url: well-known/cloudkit-well-known.yml
+  - type: SecurityTxt
+    url: well-known/cloudkit-security.txt
+  - type: X-MCPServerCandidate
+    url: mcp/cloudkit-mcp.yml
+  - type: LLMsTxt
+    url: llms/cloudkit-llms.txt
+  - type: Conformance
+    url: conformance/cloudkit-conformance.yml
+  - type: Compliance
+    url: conformance/cloudkit-conformance.yml
+  - type: ErrorCatalog
+    url: errors/cloudkit-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/cloudkit-lifecycle.yml
+  - type: StatusPage
+    url: lifecycle/cloudkit-lifecycle.yml
+  - type: VulnerabilityDisclosure
+    url: security/cloudkit-vulnerability-disclosure.yml
+  - type: Security
+    url: security/cloudkit-vulnerability-disclosure.yml
+  - type: TrustCenter
+    url: security/cloudkit-trust-center.yml
+  - type: Sandbox
+    url: sandbox/cloudkit-sandbox.yml
+  - type: Conventions
+    url: conventions/cloudkit-conventions.yml
+  - type: ChangeLog
+    url: changelog/cloudkit-changelog.yml
+  - type: CLI
+    url: cli/cloudkit-cli.yml
+  - type: DataModel
+    url: data-model/cloudkit-data-model.yml
+  - type: Plans
+    url: plans/cloudkit-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/cloudkit-rate-limits.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: DeveloperPortal
+    url: https://developer.apple.com/icloud/cloudkit/
+  - type: APIReference
+    url: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html
+  - type: GettingStarted
+    url: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html
+  - type: Support
+    url: https://developer.apple.com/support/
+  - type: Blog
+    url: https://developer.apple.com/news/
+  - type: GitHubOrganization
+    url: https://github.com/apple
+  - type: Pricing
+    url: https://developer.apple.com/programs/
+  - type: SignUp
+    url: https://developer.apple.com/programs/enroll/
+  - type: TermsOfService
+    url: https://www.apple.com/legal/internet-services/icloud/
 maintainers:
   - FN: Kin Lane
     email: kinlane@gmail.com
+x-enrichment:
+  date: '2026-09-05'
+  status: enriched
+  artifacts_added: 29
+  pass: local-v3
+x-parent: apple
+x-relationship: product

@@ -1,0 +1,52 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html,
+  https://developer.apple.com/icloud/cloudkit/automating/, https://developer.apple.com/icloud/ck-tool/
+published: true
+model: environment-in-the-url
+note: >-
+  CloudKit's sandbox is not a separate host or a test key prefix — it is a path segment. Every web
+  services URL carries an `environment` of `development` or `production`, so the same credentials and
+  the same code hit either side by changing one URL component. Development data and schema are separate
+  from production; store-distributed apps can only reach production.
+environments:
+- name: development
+  value: development
+  url_position: 4th path segment, after the container id
+  reachable_by: development builds and the CloudKit Console; NOT reachable by App Store builds
+  note: Schema changes are made here and then deployed to production from the CloudKit Console.
+- name: production
+  value: production
+  url_position: 4th path segment, after the container id
+  reachable_by: both development and App Store builds
+credentials:
+  test_key_prefix: null
+  live_key_prefix: null
+  note: >-
+    There is no test/live key split. The same CloudKit API token, server-to-server key or management
+    token works against both environments; the environment is chosen by URL. That means a wrong path
+    segment writes to production with production credentials — the failure mode an agent must guard.
+tooling:
+- name: CloudKit Console
+  url: https://icloud.developer.apple.com/dashboard/
+  capability: Browse and edit development/production records, manage schema, deploy schema to production, issue API tokens and management tokens.
+- name: cktool
+  url: https://developer.apple.com/icloud/ck-tool/
+  capability: >-
+    Reset the development schema to the current production definition, export/import a .ckdb schema
+    file, query records and create records for integration tests. Ships with Xcode 13 and later.
+- name: CKTool JS
+  url: https://developer.apple.com/documentation/cktooljs
+  capability: The same operations scripted from Node.js or a browser, for CI pipelines.
+fixtures:
+  test_records: null
+  test_identifiers: null
+  note: >-
+    Apple publishes no magic test values, sample containers or seeded fixtures. Test data is loaded by
+    the developer with `xcrun cktool create-record` or CKTool JS. Nothing is invented here.
+reset:
+  supported: true
+  scope: development schema only
+  command: xcrun cktool reset --schema --team-id [TEAM-ID] --container-id [CONTAINER]
+  note: Reverts the development database schema to the current production definition. Not available for production.

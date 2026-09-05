@@ -21,6 +21,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "cloudkit-assets-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "cloudkit-changes-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "cloudkit-records-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "cloudkit-subscriptions-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "cloudkit-tokens-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "cloudkit-users-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "cloudkit-zones-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

@@ -1,0 +1,58 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html,
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/RevisionHistory.html,
+  https://www.apple.com/support/systemstatus/data/developer/system_status_en_US.js
+versioning:
+  scheme: single integer in the URL path
+  current: '1'
+  location: path
+  example: https://api.apple-cloudkit.com/database/1/{container}/{environment}/{database}/records/query
+  environments:
+  - development
+  - production
+  note: >-
+    The environment is a path segment too, so promoting from development to production is a URL change,
+    not a key change.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    Apple publishes NO deprecation policy for CloudKit Web Services — no RFC 8594 Sunset/Deprecation
+    headers, no notice window, no retirement calendar. The only deprecation event on record is the
+    2016-06-13 revision-history line "Added sharing support and deprecated some endpoints", which names
+    no endpoint and states no removal date. The reference itself now sits in Apple's Documentation
+    Archive, which is a lifecycle signal about the DOCS, not a stated policy about the API.
+  events:
+  - date: '2016-06-13'
+    description: Added sharing support and deprecated some endpoints (endpoints not enumerated).
+    source: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/RevisionHistory.html
+  deprecated_operations_in_spec: []
+docs_status:
+  location: Documentation Archive (developer.apple.com/library/archive/)
+  implication: >-
+    Apple has stopped revising the CloudKit Web Services Reference. The service itself is live —
+    api.apple-cloudkit.com answers and returns a valid TLS certificate through 2027-02-25 — but the
+    contract documentation is frozen at 2016.
+status_page:
+  published: true
+  human: https://www.apple.com/support/systemstatus/
+  developer: https://developer.apple.com/system-status/
+  machine_readable: https://www.apple.com/support/systemstatus/data/developer/system_status_en_US.js
+  machine_readable_status: 200
+  services_named:
+  - CloudKit Database
+  - CloudKit Console
+  note: >-
+    Apple's developer system-status feed names "CloudKit Database" and "CloudKit Console" as first-class
+    services and serves the whole board as JSON (JSONP-wrapped), so an agent can read incident state
+    without scraping. Consumer iCloud services are on the separate apple.com board.
+sla:
+  published: false
+  note: No availability SLA or uptime commitment is published for CloudKit or CloudKit Web Services.
+support:
+  forums: https://developer.apple.com/forums/tags/cloudkit
+  support: https://developer.apple.com/support/
+  feedback: https://feedbackassistant.apple.com/

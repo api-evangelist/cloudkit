@@ -1,0 +1,93 @@
+generated: '2026-09-05'
+method: searched
+source: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/ErrorCodes.html
+format: custom-json
+note: >-
+  CloudKit Web Services does NOT use RFC 9457 problem+json. Errors are returned as a plain JSON object
+  whose `serverErrorCode` carries the machine-readable string below. The 14 codes here are transcribed
+  verbatim from Apple's own error-code reference; nothing is inferred. Per-item failures inside a batch
+  are returned in the same shape inside the results array rather than as an HTTP error.
+envelope:
+  content_type: application/json
+  fields:
+  - name: uuid
+    description: Unique identifier for the failed request, useful when reporting a problem to Apple.
+  - name: serverErrorCode
+    description: The machine-readable error string (see error_codes below).
+  - name: reason
+    description: Human-readable explanation of the failure.
+  - name: retryAfter
+    description: Suggested number of seconds to wait before retrying; present on throttled/retryable errors.
+  - name: redirectURL
+    description: >-
+      Present on AUTHENTICATION_REQUIRED — the URL the client must open so the user can sign in and a
+      ckWebAuthToken can be issued.
+  example:
+    uuid: 4f02f7aa-fbb5-4cf8ae8e-4dd463793841
+    serverErrorCode: AUTHENTICATION_REQUIRED
+    reason: request needs authorization
+    redirectURL: "[redirect URL]"
+  example_source: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html
+error_code_count: 14
+error_codes:
+- code: ACCESS_DENIED
+  http_status: 403
+  meaning: You don't have permission to access the endpoint, record, zone, or database.
+  retryable: false
+- code: ATOMIC_ERROR
+  http_status: 400
+  meaning: An atomic batch operation failed.
+  retryable: false
+- code: AUTHENTICATION_FAILED
+  http_status: 401
+  meaning: Authentication was rejected.
+  retryable: false
+- code: AUTHENTICATION_REQUIRED
+  http_status: 421
+  meaning: The request requires authentication but none was provided.
+  retryable: false
+  remediation: Open the returned redirectURL to obtain a ckWebAuthToken, then repeat the request with it appended.
+- code: BAD_REQUEST
+  http_status: 400
+  meaning: The request was not valid.
+  retryable: false
+- code: CONFLICT
+  http_status: 409
+  meaning: The recordChangeTag value expired.
+  retryable: true
+  remediation: Re-fetch the record, take the current recordChangeTag, and retry the modify.
+- code: EXISTS
+  http_status: 409
+  meaning: The resource that you attempted to create already exists.
+  retryable: false
+- code: INTERNAL_ERROR
+  http_status: 500
+  meaning: An internal error occurred.
+  retryable: false
+- code: NOT_FOUND
+  http_status: 404
+  meaning: The resource was not found.
+  retryable: false
+- code: QUOTA_EXCEEDED
+  http_status: 413
+  meaning: >-
+    If accessing the public database, you exceeded the app's quota. If accessing the private database,
+    you exceeded the user's iCloud quota.
+  retryable: false
+- code: THROTTLED
+  http_status: 429
+  meaning: The request was throttled. Try the request again later.
+  retryable: true
+  remediation: Back off for the number of seconds in retryAfter before retrying.
+- code: TRY_AGAIN_LATER
+  http_status: 503
+  meaning: An internal error occurred. Try the request again.
+  retryable: true
+- code: VALIDATING_REFERENCE_ERROR
+  http_status: 412
+  meaning: The request violates a validating reference constraint.
+  retryable: false
+- code: ZONE_NOT_FOUND
+  http_status: 404
+  meaning: The zone specified in the request was not found.
+  retryable: false

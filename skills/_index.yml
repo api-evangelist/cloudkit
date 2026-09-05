@@ -1,0 +1,30 @@
+generated: '2026-09-05'
+method: generated
+source: >-
+  openapi/cloudkit-*-openapi.yml (operationIds verified against the specs in this repo) plus Apple's
+  archived CloudKit Web Services Reference for the runtime semantics
+note: >-
+  Apple publishes no AGENTS.md and no agent skills of its own — searched developer.apple.com and
+  github.com/apple on 2026-09-05. These four are API Evangelist generated, grounded only in operationIds
+  that exist in this repository's specs and in behaviour Apple documents in prose.
+skills:
+- name: cloudkit-query-records
+  file: cloudkit-query-records.md
+  api: cloudkit:cloudkit-records-api
+  operations: [queryRecords, lookupRecords]
+  consequence: read
+- name: cloudkit-modify-records
+  file: cloudkit-modify-records.md
+  api: cloudkit:cloudkit-records-api
+  operations: [modifyRecords, lookupRecords]
+  consequence: write-destructive
+- name: cloudkit-sync-changes
+  file: cloudkit-sync-changes.md
+  api: cloudkit:cloudkit-changes-api
+  operations: [databaseChanges, zoneRecordChanges, zoneChanges, recordChanges, listZones]
+  consequence: read
+- name: cloudkit-upload-assets
+  file: cloudkit-upload-assets.md
+  api: cloudkit:cloudkit-assets-api
+  operations: [uploadAssets, rereferenceAssets, modifyRecords]
+  consequence: write

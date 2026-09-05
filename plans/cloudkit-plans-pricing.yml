@@ -1,0 +1,41 @@
+generated: '2026-09-05'
+method: searched
+source: https://developer.apple.com/programs/, https://developer.apple.com/icloud/cloudkit/
+plan_count: 0
+note: >-
+  Apple publishes NO usage-priced plans for CloudKit. There is no per-request, per-GB or per-container
+  price list, no free-tier quota table on any live Apple page, and no upgrade path to buy more capacity
+  as a developer. Access is gated by Apple Developer Program membership instead, so the only published
+  figure that touches CloudKit is the membership fee. The historical CloudKit public-database quota
+  chart (asset/database/transfer allowances scaling with app users) is no longer served on
+  developer.apple.com/icloud/cloudkit/ — the only quantitative claim left there is "get up to 1PB of
+  storage for your app's public data", with no tier structure behind it. plan_count is 0 because those
+  are memberships, not API plans; the memberships are recorded below as context, not as plans.
+pricing_url: https://developer.apple.com/programs/
+usage_pricing_published: false
+free_tier_quota_published: false
+access_gate:
+- name: Apple Developer Program
+  price: '99'
+  currency: USD
+  period: year
+  quote: '$99 annual membership'
+  url: https://developer.apple.com/programs/
+  note: Required to create an iCloud container, obtain a CloudKit API token, and use cktool.
+- name: Apple Developer Enterprise Program
+  price: '299'
+  currency: USD
+  period: year
+  quote: 'Apple Developer Enterprise Program ($299/year)'
+  url: https://developer.apple.com/programs/
+  note: For private in-house distribution; also satisfies the CloudKit membership requirement.
+storage_claim:
+  quote: get up to 1PB of storage for your app's public data
+  source: https://developer.apple.com/icloud/cloudkit/
+  note: Marketing ceiling with no published tier table, no overage price and no enforcement detail.
+quota_enforcement:
+  signal: QUOTA_EXCEEDED (HTTP 413)
+  scope: >-
+    Public database — the app's quota. Private database — the end user's own iCloud storage, which the
+    USER pays Apple for, not the developer.
+  source: errors/cloudkit-problem-types.yml

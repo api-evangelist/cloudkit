@@ -1,0 +1,136 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html,
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/QueryingRecords.html,
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/Types.html,
+  https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/ErrorCodes.html
+transport:
+  protocol: HTTPS
+  method: POST for every operation (a small number of GET variants exist for user discovery)
+  content_type: "application/json (Apple's own examples send content-type: text/plain)"
+  rpc_style: >-
+    Path segments name an operation, not a resource — /records/query, /records/modify, /zones/modify.
+    This is an RPC-over-HTTP surface, so HTTP verb semantics carry no meaning; the operation name does.
+auth:
+  styles:
+  - api-token-plus-web-auth-token
+  - server-to-server-ecdsa-signature
+  - management-token (CloudKit Management API, used by cktool / CKTool JS)
+  detail: see ../authentication/cloudkit-authentication.yml
+  note: >-
+    API token and server-to-server signing MUST NOT be mixed in one request — Apple states the request
+    will fail. Signed server-to-server requests expire 10 minutes after their ISO8601 date.
+idempotency:
+  supported: false
+  coverage: none
+  mechanism: null
+  header: null
+  note: >-
+    CloudKit publishes no idempotency key of any kind. Replay safety is instead handed to the caller as
+    OPTIMISTIC CONCURRENCY: records/modify requires the current `recordChangeTag` for update, replace
+    and delete, and a stale tag fails with CONFLICT (409) rather than silently re-applying. That
+    prevents a lost update; it does NOT make a retried create idempotent — a repeated create with a
+    server-generated recordName produces a second record. An agent that must not double-write has to
+    supply its own deterministic `recordName` and treat EXISTS (409) as success.
+concurrency:
+  mechanism: recordChangeTag
+  scope: per record
+  failure_code: CONFLICT
+  http_status: 409
+pagination:
+  style: cursor
+  request_params:
+  - resultsLimit
+  - continuationMarker
+  response_fields:
+  - continuationMarker
+  default_limit: the maximum allowed by the documented data size limits (200 records per response)
+  note: >-
+    Cursor pagination on records/query: pass the response's continuationMarker back in the next request
+    with the same query; when no continuationMarker comes back, the result set is exhausted.
+field_selection:
+  mechanism: desiredKeys
+  note: An array of field names on records/query and records/lookup; null returns all fields.
+  numbers_as_strings: numbersAsStrings (boolean) forces number fields to be returned as strings.
+metadata:
+  user_defined: false
+  system_fields:
+  - created (timestamp, userRecordName, deviceID)
+  - modified (timestamp, userRecordName, deviceID)
+  - recordChangeTag
+  - shortGUID
+request_tracing:
+  request_id_field: uuid
+  location: error response body
+  header: null
+  note: >-
+    Failed requests carry a `uuid` in the JSON body for reporting to Apple. There is no documented
+    request-id RESPONSE HEADER on the database API, so successful calls are not individually traceable
+    by the caller.
+versioning:
+  style: path
+  current: '1'
+  detail: see ../lifecycle/cloudkit-lifecycle.yml
+errors:
+  envelope: custom JSON (uuid, serverErrorCode, reason, retryAfter, redirectURL)
+  rfc9457: false
+  catalog: ../errors/cloudkit-problem-types.yml
+rate_limit_signalling:
+  headers: none
+  body_field: retryAfter
+  exhaustion_status: 429 (THROTTLED)
+  detail: ../rate-limits/cloudkit-rate-limits.yml
+batching:
+  supported: true
+  mechanism: >-
+    records/modify, zones/modify and subscriptions/modify take an `operations` array; up to 200
+    operations per request.
+  atomicity: >-
+    Zones created with `atomic: true` fail the whole batch on any member failure and return
+    ATOMIC_ERROR (400); non-atomic zones return per-operation results.
+dry_run_mode:
+  supported: false
+  note: No preview, validate-only or dry-run flag is documented on any mutating operation.
+reversibility:
+  status: none
+  grade: none
+  note: >-
+    CloudKit publishes NO reversal operation and NO restore window for the web services surface. Deletes
+    are issued through records/modify with a delete operation and there is no undelete, no trash, no
+    restore endpoint and no stated retention period after which a deleted record is unrecoverable. The
+    only safety net documented is the recordChangeTag conflict check, which prevents overwriting newer
+    data but does not undo anything already written. Zone deletion via zones/modify removes the zone and
+    its records with the same finality. Because a write surface exists, this is a real `none`, not `na`.
+  write_surfaces:
+  - operation: modifyRecords
+    path: /records/modify
+    reversal: null
+    window: null
+  - operation: modifyZones
+    path: /zones/modify
+    reversal: null
+    window: null
+  - operation: modifySubscriptions
+    path: /subscriptions/modify
+    reversal: null
+    window: null
+  - operation: uploadAssets
+    path: /assets/upload
+    reversal: null
+    window: null
+    note: Assets are removed by clearing the referencing field on the record; no asset-delete operation is published.
+  development_environment_caveat: >-
+    In the development environment only, `xcrun cktool reset --schema` reverts the development database
+    schema to the current production definition. That is a SCHEMA reset for testing, not a data undo,
+    and it does not exist for production.
+  source: >-
+    https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/ModifyRecords.html
+    and https://developer.apple.com/icloud/ck-tool/
+events:
+  webhooks: false
+  asyncapi: false
+  mechanism: >-
+    Change notification is push, not callback: subscriptions/modify registers a subscription and
+    tokens/create + tokens/register register an APNs token that Apple pushes to. There is no HTTP
+    callback to a caller-supplied URL, so there is no webhook catalog and no AsyncAPI to harvest.

@@ -1,0 +1,12 @@
+Contact: https://security.apple.com
+
+# Apple Security Updates
+Acknowledgments: https://support.apple.com/HT201222
+
+# Apple Web Server Security Acknowledgements
+Acknowledgments: https://support.apple.com/HT201536
+
+# Apple Security Bounty Guidelines
+Policy: https://security.apple.com/bounty/guidelines/
+
+Expires: 2027-08-28T01:00:00.000Z

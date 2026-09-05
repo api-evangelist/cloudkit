@@ -1,0 +1,39 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://support.apple.com/guide/certifications/welcome/web (200),
+  https://support.apple.com/guide/certifications/apple-internet-services-security-apc34d2c0468b/1/web/1.0 (200)
+trust_center:
+  name: Apple Platform Certifications
+  url: https://support.apple.com/guide/certifications/welcome/web
+  self_serve: true
+  note: >-
+    Apple publishes a guide rather than a SaaS-style trust portal — no document request form, no
+    downloadable report gate. Certificates themselves are hosted by the registrar, not by Apple.
+certifications:
+- name: ISO/IEC 27001
+  scope: >-
+    Apple internet services, with iCloud explicitly named in scope alongside APNs, iMessage, FaceTime,
+    Managed Apple Accounts and the collaboration services.
+  evidence: https://support.apple.com/guide/certifications/apple-internet-services-security-apc34d2c0468b/1/web/1.0
+  registrar: Coalfire
+  certificate_number: null
+  note: Apple states certificates are viewable in the registrar's certificate directory; no number or expiry is published on Apple's page.
+- name: ISO/IEC 27018
+  scope: Same Apple internet services scope, covering PII protection in public cloud. iCloud named.
+  evidence: https://support.apple.com/guide/certifications/apple-internet-services-security-apc34d2c0468b/1/web/1.0
+  registrar: Coalfire
+  certificate_number: null
+- name: SOC 3
+  scope: >-
+    Stated for Apple Private Cloud Compute only, NOT for iCloud or CloudKit. Recorded to keep the
+    boundary explicit rather than to credit CloudKit with it.
+  evidence: https://support.apple.com/guide/certifications/welcome/web
+  applies_to_cloudkit: false
+not_found:
+- SOC 2 report for iCloud/CloudKit
+- HIPAA / FedRAMP / PCI DSS attestation naming iCloud or CloudKit
+- a CloudKit-specific subprocessor list or DPA landing page
+privacy:
+  policy: https://www.apple.com/legal/privacy/
+  icloud_terms: https://www.apple.com/legal/internet-services/icloud/

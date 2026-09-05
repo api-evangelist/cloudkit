@@ -1,0 +1,33 @@
+generated: '2026-09-05'
+method: searched
+source: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/RevisionHistory.html
+scheme: dated document revision history
+current_version: '1'
+version_location: URL path segment — /database/1/...
+url: https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/RevisionHistory.html
+note: >-
+  The only dated change record Apple publishes for the CloudKit Web Services protocol is the document
+  revision history, and its last entry is 2016-06-13 — the whole reference now lives under
+  developer.apple.com/library/archive/ (Apple's Documentation Archive). The wire protocol version has
+  never moved off `1`. Framework-level CloudKit changes are announced through the per-OS release notes
+  and WWDC sessions, not through a CloudKit Web Services changelog; developer.apple.com/news/releases/
+  is the nearest live dated surface and is recorded as the release-notes link, not as this API's
+  changelog.
+entries:
+- date: '2016-06-13'
+  breaking: true
+  highlights: Added sharing support and deprecated some endpoints.
+- date: '2016-02-04'
+  breaking: false
+  highlights: Added "Accessing CloudKit Using a Server-to-Server Key" section.
+- date: '2015-12-10'
+  breaking: false
+  highlights: Applied minor edits throughout.
+- date: '2015-11-05'
+  breaking: false
+  highlights: Applied minor edits throughout.
+- date: '2015-09-16'
+  breaking: false
+  highlights: First revision that describes the CloudKit web services protocol.
+related:
+  release_notes: https://developer.apple.com/news/releases/
