@@ -1,13 +1,7 @@
 {
   "provider": "cloudkit",
   "sources": [
-    "cloudkit-assets-api-openapi.yml",
-    "cloudkit-changes-api-openapi.yml",
-    "cloudkit-records-api-openapi.yml",
-    "cloudkit-subscriptions-api-openapi.yml",
-    "cloudkit-tokens-api-openapi.yml",
-    "cloudkit-users-api-openapi.yml",
-    "cloudkit-zones-api-openapi.yml"
+    "_original/cloudkit-openapi.yml"
   ],
   "outputs": [
     "cloudkit-assets-api-openapi.yml",
@@ -22,14 +16,24 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "cloudkit-assets-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "cloudkit-changes-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "cloudkit-records-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "cloudkit-subscriptions-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "cloudkit-tokens-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "cloudkit-users-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "cloudkit-zones-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "cloudkit-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "cloudkit-openapi.yml: declared missing tag: Assets",
+    "cloudkit-openapi.yml: declared missing tag: Changes",
+    "cloudkit-openapi.yml: declared missing tag: Records",
+    "cloudkit-openapi.yml: declared missing tag: Subscriptions",
+    "cloudkit-openapi.yml: declared missing tag: Tokens",
+    "cloudkit-openapi.yml: declared missing tag: Users",
+    "cloudkit-openapi.yml: declared missing tag: Zones",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "cloudkit-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudkit-changes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudkit-records-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudkit-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudkit-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudkit-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudkit-zones-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

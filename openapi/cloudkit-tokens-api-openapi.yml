@@ -1,23 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Apple CloudKit Web Services Assets Tokens API
+  title: Apple CloudKit Web Services Tokens API
   description: 'Best-effort OpenAPI 3.1 description of Apple CloudKit Web Services, the
 
     REST surface that lets non-Apple-platform clients read and write data in
 
-    a CloudKit container''s public, private, or shared database. Operations
-
-    cover records, zones, subscriptions, assets, users, and database/zone
-
-    changes. Authentication uses either a CloudKit API token (for end-user
-
-    authenticated requests; the token is appended as the `ckAPIToken` query
-
-    parameter) or a server-to-server ECDSA signature (X-Apple-CloudKit-Request-*
-
-    headers) for backend access.
-
-    '
+    a CloudKit container''s public, private, or shared database.'
   version: '1.0'
   contact:
     name: Apple CloudKit
