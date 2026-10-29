@@ -1,4 +1,4 @@
-# Apple CloudKit (cloudkit)
+# Apple CloudKit
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,98 +66,166 @@
 
 Apple CloudKit is the cloud backend for iOS, iPadOS, macOS, tvOS, watchOS, visionOS, and the web. CloudKit Web Services is the public REST surface that lets non-Apple-platform clients (web apps, servers) read and write data into a CloudKit container's public, private, or shared database. The web service is hosted at api.apple-cloudkit.com and accepts either an API token (for end-user-authenticated access) or a server-to- server ECDSA key for backend access. Operations cover records, zones, subscriptions, assets, users, and database changes.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/cloudkit/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/cloudkit/refs/heads/main/apis.yml)
+**Areas:** Apple · Cloud Storage · CloudKit · Database · iCloud · Mobile · Sync · Web Services
 
-## Scope
+## Apple CloudKit on APIs.io
 
-- **Type:** Index
+Everything profiled for Apple CloudKit is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cloudkit/](https://apis.io/providers/cloudkit/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-- Apple
-- Cloud Storage
-- CloudKit
-- Database
-- iCloud
-- Mobile
-- Sync
-- Web Services
+- [CloudKit Web Services](https://apis.io/apis/cloudkit/web-services/) — The CloudKit Web Services REST API is structured as /database/1/{container}/{environment}/{database}/{operation}, where database is one of public, private,…
+- [CloudKit JS](https://apis.io/apis/cloudkit/js/) — CloudKit JS is Apple's JavaScript SDK that wraps the CloudKit Web Services REST API for browser apps. It provides Sign in with Apple authentication,…
+- [CloudKit Framework](https://apis.io/apis/cloudkit/framework/) — The native CloudKit framework for iOS, iPadOS, macOS, tvOS, watchOS, and visionOS. Provides programmatic access to CloudKit containers, records, zones,…
+- [Apple CloudKit Assets API](https://apis.io/apis/cloudkit/cloudkit-assets-api/) — The Assets API from Apple CloudKit — 2 operation(s) for assets.
+- [Apple CloudKit Changes API](https://apis.io/apis/cloudkit/cloudkit-changes-api/) — The Changes API from Apple CloudKit — 2 operation(s) for changes.
+- [Apple CloudKit Records API](https://apis.io/apis/cloudkit/cloudkit-records-api/) — The Records API from Apple CloudKit — 6 operation(s) for records.
+- [Apple CloudKit Subscriptions API](https://apis.io/apis/cloudkit/cloudkit-subscriptions-api/) — The Subscriptions API from Apple CloudKit — 3 operation(s) for subscriptions.
+- [Apple CloudKit Tokens API](https://apis.io/apis/cloudkit/cloudkit-tokens-api/) — The Tokens API from Apple CloudKit — 2 operation(s) for tokens.
+- [Apple CloudKit Users API](https://apis.io/apis/cloudkit/cloudkit-users-api/) — The Users API from Apple CloudKit — 4 operation(s) for users.
+- [Apple CloudKit Zones API](https://apis.io/apis/cloudkit/cloudkit-zones-api/) — The Zones API from Apple CloudKit — 4 operation(s) for zones.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-04-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### CloudKit Web Services
+Model Context Protocol servers that expose the API to agents.
 
-The CloudKit Web Services REST API is structured as /database/1/{container}/{environment}/{database}/{operation}, where database is one of public, private, or shared and environment is development or production. Operations include records lookup, query, modify, delete, zone create/list/delete, subscription create/list/delete, asset upload, user info and changes. Calls are authenticated using an API token for user-authenticated access (with ckWebAuthToken) or a server-to-server ECDSA key for backend access.
+- [cloudkit-web-services (candidate)](https://apis.io/servers/cloudkit/cloudkit-web-services-candidate/)
 
-- **Human URL:** [https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html](https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html)
-- **Base URL:** `https://api.apple-cloudkit.com/database/1`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- REST
-- Records
-- Zones
-- Subscriptions
+- [Cloudkit Agentic Access](https://apis.io/agentic-access/cloudkit/cloudkit-agentic-access/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html)
-- [Setup](https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html)
-- [A P I  Tokens](https://developer.apple.com/documentation/cloudkit/obtaining-an-api-token-for-an-icloud-container)
-- [Postman Collection](collections/cloudkit.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudkit.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Linked-data contexts for the provider's vocabulary.
 
-### CloudKit JS
+- [Cloudkit Context](https://apis.io/jsonld/cloudkit/cloudkit-context/)
 
-CloudKit JS is Apple's JavaScript SDK that wraps the CloudKit Web Services REST API for browser apps. It provides Sign in with Apple authentication, container/database/zone access, queries, record operations, subscriptions, and asset management.
+#### Collections (8)
 
-- **Human URL:** [https://developer.apple.com/documentation/cloudkitjs](https://developer.apple.com/documentation/cloudkitjs)
+Postman and Open Collection request collections.
 
-#### Tags
+- [Apple CloudKit Web Services](https://apis.io/collections/cloudkit/open-cloudkit/)
+- [Apple CloudKit Web Services Assets API](https://apis.io/collections/cloudkit/open-cloudkit-assets-api/)
+- [Apple CloudKit Web Services Assets Changes API](https://apis.io/collections/cloudkit/open-cloudkit-changes-api/)
+- [Apple CloudKit Web Services Assets Records API](https://apis.io/collections/cloudkit/open-cloudkit-records-api/)
+- [Apple CloudKit Web Services Assets Subscriptions API](https://apis.io/collections/cloudkit/open-cloudkit-subscriptions-api/)
+- [Apple CloudKit Web Services Assets Tokens API](https://apis.io/collections/cloudkit/open-cloudkit-tokens-api/)
+- [Apple CloudKit Web Services Assets Users API](https://apis.io/collections/cloudkit/open-cloudkit-users-api/)
+- [Apple CloudKit Web Services Assets Zones API](https://apis.io/collections/cloudkit/open-cloudkit-zones-api/)
 
-- JavaScript
-- SDK
-- Web
+#### Overlays (7)
 
-#### Properties
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- [Documentation](https://developer.apple.com/documentation/cloudkitjs)
-- [Postman Collection](collections/cloudkit.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudkit.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Cloudkit Assets Api Overlay](https://apis.io/overlays/cloudkit/cloudkit-assets-api-overlay/)
+- [Cloudkit Changes Api Overlay](https://apis.io/overlays/cloudkit/cloudkit-changes-api-overlay/)
+- [Cloudkit Records Api Overlay](https://apis.io/overlays/cloudkit/cloudkit-records-api-overlay/)
+- [Cloudkit Subscriptions Api Overlay](https://apis.io/overlays/cloudkit/cloudkit-subscriptions-api-overlay/)
+- [Cloudkit Tokens Api Overlay](https://apis.io/overlays/cloudkit/cloudkit-tokens-api-overlay/)
+- [Cloudkit Users Api Overlay](https://apis.io/overlays/cloudkit/cloudkit-users-api-overlay/)
+- [Cloudkit Zones Api Overlay](https://apis.io/overlays/cloudkit/cloudkit-zones-api-overlay/)
 
-### CloudKit Framework
+#### Governance rules (1)
 
-The native CloudKit framework for iOS, iPadOS, macOS, tvOS, watchOS, and visionOS. Provides programmatic access to CloudKit containers, records, zones, subscriptions, and sharing. Out of band of the web services REST surface but shares the same data model.
+Spectral rulesets for the provider's contracts.
 
-- **Human URL:** [https://developer.apple.com/documentation/cloudkit](https://developer.apple.com/documentation/cloudkit)
+- [Apple CloudKit API Rules](https://apis.io/rules/cloudkit/cloudkit-rules/)
 
-#### Tags
+#### Security (4)
 
-- SDK
-- Apple Platforms
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Cloudkit Authentication](https://apis.io/security/cloudkit/cloudkit-authentication/)
+- [Cloudkit Domain Security](https://apis.io/security/cloudkit/cloudkit-domain-security/)
+- [Cloudkit Trust Center](https://apis.io/security/cloudkit/cloudkit-trust-center/)
+- [Cloudkit Vulnerability Disclosure](https://apis.io/security/cloudkit/cloudkit-vulnerability-disclosure/)
 
-- [Documentation](https://developer.apple.com/documentation/cloudkit)
-- [Postman Collection](collections/cloudkit.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudkit.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (1)
 
-## Common Properties
+Published plans, tiers and prices.
+
+- [Cloudkit Plans Pricing](https://apis.io/plans/cloudkit/cloudkit-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Cloudkit Rate Limits](https://apis.io/rate-limits/cloudkit/cloudkit-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.icloud.com/)
-- [Developer](https://developer.apple.com/icloud/cloudkit/)
 - [Documentation](https://developer.apple.com/documentation/cloudkit)
-- [Console](https://icloud.developer.apple.com/dashboard/)
-- [Privacy Policy](https://www.apple.com/legal/privacy/)
-- [JSON-LD](json-ld/cloudkit-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/cloudkit-rules.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
+- [Getting started](https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/SettingUpWebServices.html)
+- [API reference](https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/index.html)
+- [Pricing](https://developer.apple.com/programs/)
+- [Sign up](https://developer.apple.com/programs/enroll/)
+- [Support](https://developer.apple.com/support/)
+- [Blog](https://developer.apple.com/news/)
+- [Terms of service](https://www.apple.com/legal/internet-services/icloud/)
+- [Privacy policy](https://www.apple.com/legal/privacy/)
+- [GitHub](https://github.com/apple)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kinlane@gmail.com
+**Kin Score 61.7** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 46.9 |
+| Contract governance | 31.8 |
+| Operational transparency | 76.3 |
+| Developer ergonomics | 80.4 |
+| Access clarity | 60.5 |
+
+**Agent readiness 25.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cloudkit/](https://apis.io/providers/cloudkit/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Apple CloudKit: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cloudkit/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
