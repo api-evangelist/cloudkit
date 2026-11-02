@@ -1,0 +1,75 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://developer.apple.com/programs/
+sources:
+- https://developer.apple.com/programs/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: tiered-subscription
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+  managed_tier: Join the Apple Developer Program $99 annual membership
+published: true
+note: Apple Developer Program membership page; lists free account, $99/year membership, and $299/year
+  Enterprise Program. No CloudKit-specific API pricing stated.
+plan_count: 3
+currency: USD
+plans:
+- name: Free account
+  price_text: Free account
+  period: none
+  included_quota: Access beta versions of Xcode and operating systems; test apps on own devices; Developer
+    Forums; Feedback Assistant; online Meet with Apple events
+- name: Apple Developer Program
+  price_text: $99 annual membership
+  price: 99
+  currency: USD
+  period: year
+  unit: membership
+  included_quota: Developer tools, capabilities and services, TestFlight, distribution on Apple platforms,
+    analytics, code-level technical support
+- name: Apple Developer Enterprise Program
+  price_text: ($299/year)
+  price: 299
+  currency: USD
+  period: year
+  unit: membership
+  included_quota: Private distribution directly to employees through secure internal system or MDM
+rate_limit_statements:
+- you can invite up to 10,000 external users to try out your beta builds
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: Free account
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Apple Developer Program
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - year
+  - name: Apple Developer Enterprise Program
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - year
