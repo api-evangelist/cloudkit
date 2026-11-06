@@ -44,11 +44,12 @@ plans:
 rate_limit_statements:
 - you can invite up to 10,000 external users to try out your beta builds
 x-canonical:
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - subscription
-  units: []
+  units:
+  - period
   plans:
   - name: Free account
     access: other
@@ -62,7 +63,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - year
   - name: Apple Developer Enterprise Program
@@ -70,6 +71,6 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - year
